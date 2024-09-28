@@ -7,3 +7,6 @@ ensure lockpick
 ensure vorp_doorlock
 
 
+### dependencies 
+
+[lockpick](https://github.com/outsider31000/lockpick) download
