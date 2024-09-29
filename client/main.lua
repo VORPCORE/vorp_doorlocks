@@ -146,6 +146,10 @@ local function manageDoorState()
     end
 end
 
+RegisterNetEvent("vorp_doorlocks:Client:UpdatePerms", function()
+    manageDoorState()
+end)
+
 
 RegisterNetEvent("vorp_doorlocks:Client:UpdateDoorState", function(door, state)
     Config.Doors[door].DoorState = state

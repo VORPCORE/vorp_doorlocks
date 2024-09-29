@@ -53,3 +53,10 @@ AddEventHandler("vorp:SelectedCharacter", function(source, character)
     local data <const> = msgpack.pack(gatherStates)
     TriggerClientEvent("vorp_doorlocks:Client:Sync", source, data)
 end)
+
+--Update perms for doors based on job change, no need to relog
+AddEventHandler("vorp:playerJobChange", function(source, newjob, oldjob)
+    SetTimeout(1000, function()
+        TriggerClientEvent("vorp_doorlocks:Client:UpdatePerms", source)
+    end)
+end)
