@@ -4,7 +4,6 @@ Config.DevMode = false        -- set to false on live servers
 
 Config.AlertProbability = 0.5 -- 0.5 = 50% chance of alerting police if Config.Doors.Alert is true
 
-
 Config.Permissions = {
     location = { -- name must match config.Doors.Perms
         ValSheriff = true,
@@ -45,7 +44,7 @@ Config.Doors = {
     [1508776842] = {
         Pos = vector3(-270.76641845703, 810.02648925781, 118.39580535889),
         Name = "Back Jail Door",
-        DoorState = 0,
+        DoorState = 1,
         Permissions = Config.Permissions.location,
         BreakAble = Config.Lockpicks.location,
         Difficulty = 3,
@@ -54,7 +53,7 @@ Config.Doors = {
     [193903155]  = {
         Pos = vector3(-272.05209350586, 808.25830078125, 118.36851501465),
         Name = "Door 1",
-        DoorState = 0,
+        DoorState = 1,
         Permissions = Config.Permissions.location,
         BreakAble = Config.Lockpicks.location,
         Difficulty = 3,
@@ -63,7 +62,7 @@ Config.Doors = {
     [295355979]  = {
         Pos = vector3(-273.46432495117, 809.96606445313, 118.36823272705),
         Name = "Door 2",
-        DoorState = 0,
+        DoorState = 1,
         Permissions = Config.Permissions.location,
         BreakAble = Config.Lockpicks.location,
         Difficulty = 3,
@@ -72,7 +71,7 @@ Config.Doors = {
     [535323366]  = {
         Pos = vector3(-275.02328491211, 808.27404785156, 118.36856842041),
         Name = "Door 3",
-        DoorState = 0,
+        DoorState = 1,
         Permissions = Config.Permissions.location,
         BreakAble = Config.Lockpicks.location,
         Difficulty = 3,
