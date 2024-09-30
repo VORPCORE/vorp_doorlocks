@@ -37,8 +37,8 @@ local function PlayKeyAnim(ped, duration)
 end
 
 local function GetPlayerDistanceFromCoords(x, y, z)
-    local player = PlayerPedId()
-    local playerCoords = GetEntityCoords(player)
+    local player <const> = PlayerPedId()
+    local playerCoords <const> = GetEntityCoords(player)
     return #(playerCoords - vector3(x, y, z))
 end
 
@@ -97,7 +97,8 @@ RegisterNetEvent("vorp_doorlocks:Client:lockpickdoor", function(door, item)
             TriggerServerEvent("vorp_doorlocks:Server:RemoveLockpick", item)
         end
         Wait(1000)
-        TaskPlayAnim(PlayerPedId(), 'script_proc@rustling@unapproved@gate_lockpick', 'exit', 1.0, -1.0, 2500, 1, 0, true, 0, false, "", false)
+        TaskPlayAnim(PlayerPedId(), 'script_proc@rustling@unapproved@gate_lockpick', 'exit', 1.0, -1.0, 2500, 1, 0, true,
+            0, false, "", false)
         Wait(2500)
         RemoveAnimDict('script_ca@carust@02@ig@ig1_rustlerslockpickingconv01')
         RemoveAnimDict('script_proc@rustling@unapproved@gate_lockpick')
@@ -180,7 +181,6 @@ end)
 
 AddEventHandler("onClientResourceStart", function(resource)
     if GetCurrentResourceName() ~= resource then return end
-
     if not Config.DevMode then return end
 
     manageDoorState()
