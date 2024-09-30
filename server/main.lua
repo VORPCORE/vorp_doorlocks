@@ -31,7 +31,7 @@ end)
 
 RegisterNetEvent("vorp_doorlocks:Server:AlertPolice", function()
     local _source <const> = source
-    -- needs to alert vorp police
+    --todo needs to alert vorp police
 end)
 
 -- remove item
@@ -43,9 +43,9 @@ RegisterNetEvent("vorp_doorlocks:Server:RemoveLockpick", function(item)
 end)
 
 AddEventHandler("vorp:SelectedCharacter", function(source, character)
-    -- reduce data being sent, this is needed to sync with doors already manipulated by other users
     if Config.DevMode then return end
 
+    -- Sync door states
     local gatherStates = {}
     for key, value in pairs(Config.Doors) do
         gatherStates[key] = value.DoorState
@@ -54,9 +54,9 @@ AddEventHandler("vorp:SelectedCharacter", function(source, character)
     TriggerClientEvent("vorp_doorlocks:Client:Sync", source, data)
 end)
 
---Update perms for doors based on job change, no need to relog
+
 AddEventHandler("vorp:playerJobChange", function(source, newjob, oldjob)
-    SetTimeout(1000, function()
+    SetTimeout(1000, function() -- wait for statebags to be available
         TriggerClientEvent("vorp_doorlocks:Client:UpdatePerms", source)
     end)
 end)
