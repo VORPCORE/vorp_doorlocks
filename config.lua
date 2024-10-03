@@ -34,15 +34,39 @@ Config.Permissions = {
 	---- Bank Doors Permission ----
     ValBank = {
         ValBank = true,
+		ValSheriff = true,
+		BWPolice = true,
+		RhoSheriff = true,
+		SDPolice = true,
+		StrSheriff = true,
+		ArmSheriff = true,
     },
     BWBank = {
         BWBank = true,
+		ValSheriff = true,
+		BWPolice = true,
+		RhoSheriff = true,
+		SDPolice = true,
+		StrSheriff = true,
+		ArmSheriff = true,
     },
     SDBank = {
         SDBank = true,
+		ValSheriff = true,
+		BWPolice = true,
+		RhoSheriff = true,
+		SDPolice = true,
+		StrSheriff = true,
+		ArmSheriff = true,
     },
     RhoBank = {
         RhoBank = true,
+		ValSheriff = true,
+		BWPolice = true,
+		RhoSheriff = true,
+		SDPolice = true,
+		StrSheriff = true,
+		ArmSheriff = true,
     },
 	
     -- Add more here to make unique door permissions
