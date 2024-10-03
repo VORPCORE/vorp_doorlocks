@@ -52,7 +52,7 @@ Config.Doors = {
         Name = "Front Door",                                               -- Door Name
         DoorState = 0,                                                     -- Default door State 0 is open 1 is close
         Permissions = Config.Permissions.ValSheriff,                       -- Will use the jobs for this location if false everyone can open and close doors
-        BreakAble = Config.Lockpicks.ValSheriff.FrontDoor,                             -- Will use the lockpick item for this location, if false it will not use lockpick and cant be lockpicked
+        BreakAble = Config.Lockpicks.ValSheriff.FrontDoor,                 -- Will use the lockpick item for this location, if false it will not use lockpick and cant be lockpicked
         Difficulty = 3,                                                    -- Lockpick Difficulty, how many tries
         Alert = true,
     },
@@ -105,7 +105,7 @@ Config.Doors = {
 
     -- Valentine Doctor/Medic Doors
     -- Doors ID
-    [3588026089]  = {
+    [3588026089] = {
         Pos = vector3(-282.8079528808594, 803.954833984375, 118.39317321777344),
         Name = "Front Door",
         DoorState = 1,
@@ -114,7 +114,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [4067537969]  = {
+    [4067537969] = {
         Pos = vector3(-286.6419982910156, 809.7845458984375, 118.42121887207031),
         Name = "Front Door 2",
         DoorState = 1,
@@ -132,7 +132,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [3439738919]  = {
+    [3439738919] = {
         Pos = vector3(-281.0743408203125, 815.23779296875, 118.41590118408203),
         Name = "Iron Door 2",
         DoorState = 1,
@@ -144,7 +144,7 @@ Config.Doors = {
 
     -- Blackwater Police Doors
     -- Doors ID
-    [3821185084]  = {
+    [3821185084] = {
         Pos = vector3(-757.0423583984375, -1269.92333984375, 43.06862640380859),
         Name = "Front Door 1 (Left)",
         DoorState = 1,
@@ -153,7 +153,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [3410720590]  = {
+    [3410720590] = {
         Pos = vector3(-757.0423583984375, -1268.4853515625, 43.06859970092773),
         Name = "Front Door 2 (Right)",
         DoorState = 1,
@@ -162,7 +162,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [2810801921]  = {
+    [2810801921] = {
         Pos = vector3(-769.1376342773438, -1268.745361328125, 43.04003143310547),
         Name = "Back Door",
         DoorState = 1,
@@ -172,7 +172,7 @@ Config.Doors = {
         Alert = true,
     },
     -- Cells
-    [2514996158]  = {
+    [2514996158] = {
         Pos = vector3(-765.8612060546875, -1264.703857421875, 43.02326965332031),
         Name = "Cell Door 1",
         DoorState = 1,
@@ -181,7 +181,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [2167775834]  = {
+    [2167775834] = {
         Pos = vector3(-763.5278930664062, -1262.4609375, 43.02326583862305),
         Name = "Cell Door 2",
         DoorState = 1,
@@ -202,7 +202,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [1614494720]  = {
+    [1614494720] = {
         Pos = vector3(1359.0985107421875, -1297.53466796875, 76.7876205444336),
         Name = "Back Door",
         DoorState = 1,
@@ -212,7 +212,7 @@ Config.Doors = {
         Alert = true,
     },
     -- Cell
-    [1878514758]  = {
+    [1878514758] = {
         Pos = vector3(1357.333740234375, -1302.453857421875, 76.76018524169922),
         Name = "Cell Door",
         DoorState = 1,
@@ -224,7 +224,7 @@ Config.Doors = {
 
     -- Saint Denis Police Doors
     -- Doors ID
-    [1674105116]  = {
+    [1674105116] = {
         Pos = vector3(2493.37255859375, -1305.68701171875, 47.95257186889648),
         Name = "Front Door 1 (Left)",
         DoorState = 1,
@@ -233,7 +233,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [1979938193]  = {
+    [1979938193] = {
         Pos = vector3(2493.37255859375, -1307.41845703125, 47.95257186889648),
         Name = "Front Door 2 (Right)",
         DoorState = 1,
@@ -242,7 +242,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [1694749582]  = {
+    [1694749582] = {
         Pos = vector3(2493.37255859375, -1310.2252197265625, 47.95257186889648),
         Name = "Front Door 3 (Left)",
         DoorState = 1,
@@ -251,7 +251,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [1992193795]  = {
+    [1992193795] = {
         Pos = vector3(2493.37255859375, -1311.95654296875, 47.95257186889648),
         Name = "Front Door 4 (Right)",
         DoorState = 1,
@@ -260,7 +260,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [2503834054]  = {
+    [2503834054] = {
         Pos = vector3(2495.953369140625, -1317.28271484375, 47.95257186889648),
         Name = "Front Door 5 (Left)",
         DoorState = 1,
@@ -287,7 +287,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [1020479727]  = {
+    [1020479727] = {
         Pos = vector3(2508.337646484375, -1317.2796630859375, 47.95257186889648),
         Name = "Front Door 8 (Right)",
         DoorState = 1,
@@ -305,7 +305,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [1611175760]  = {
+    [1611175760] = {
         Pos = vector3(2516.14453125, -1307.724853515625, 47.95257186889648),
         Name = "Back Door 2 (Right)",
         DoorState = 1,
@@ -355,7 +355,7 @@ Config.Doors = {
     --]]
 
     -- Cells
-    [2515591150]  = {
+    [2515591150] = {
         Pos = vector3(2503.638671875, -1309.8763427734375, 47.95327377319336),
         Name = "Cell Door 1",
         DoorState = 1,
@@ -364,7 +364,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [1995743734]  = {
+    [1995743734] = {
         Pos = vector3(2499.752197265625, -1309.8763427734375, 47.95327377319336),
         Name = "Cell Door 2",
         DoorState = 1,
@@ -373,7 +373,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [3365520707]  = {
+    [3365520707] = {
         Pos = vector3(2498.5, -1307.85595703125, 47.95327377319336),
         Name = "Cell Door 3",
         DoorState = 1,
@@ -382,7 +382,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [1711767580]  = {
+    [1711767580] = {
         Pos = vector3(2502.427734375, -1307.85498046875, 47.95326995849609),
         Name = "Cell Door 4",
         DoorState = 1,
@@ -394,7 +394,7 @@ Config.Doors = {
 
     -- Strawberry Sheriff Doors
     -- Doors ID
-    [1821044729]  = {
+    [1821044729] = {
         Pos = vector3(-1806.6751708984375, -350.31280517578125, 163.64759826660156),
         Name = "Front Door",
         DoorState = 1,
@@ -403,7 +403,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [1514359658]  = {
+    [1514359658] = {
         Pos = vector3(-1812.669189453125, -345.08489990234375, 163.64759826660156),
         Name = "Back Door",
         DoorState = 1,
@@ -413,7 +413,7 @@ Config.Doors = {
         Alert = true,
     },
     -- Cells
-    [1207903970]  = {
+    [1207903970] = {
         Pos = vector3(-1812.0101318359375, -351.92095947265625, 160.46839904785156),
         Name = "Cell Door 1",
         DoorState = 1,
@@ -434,7 +434,7 @@ Config.Doors = {
 
     -- Armadillo Sheriff Doors
     -- Doors ID
-    [66424668]  = {
+    [66424668]   = {
         Pos = vector3(-3624.6982421875, -2605.415771484375, -14.35151767730712),
         Name = "Front Door",
         DoorState = 1,
@@ -444,7 +444,7 @@ Config.Doors = {
         Alert = true,
     },
     -- Cells
-    [4016307508]  = {
+    [4016307508] = {
         Pos = vector3(-3620.9931640625, -2600.2490234375, -14.35159301757812),
         Name = "Cell Door 1",
         DoorState = 1,
@@ -453,8 +453,8 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [4235597664]  = {
-        Pos = vector3(-3619.148193359375,-2604.20654296875,-14.35159301757812),
+    [4235597664] = {
+        Pos = vector3(-3619.148193359375, -2604.20654296875, -14.35159301757812),
         Name = "Cell Door 2",
         DoorState = 1,
         Permissions = Config.Permissions.ArmSheriff,
@@ -464,4 +464,11 @@ Config.Doors = {
     },
 
     -- ADD MORE DOORS HERE
+}
+
+
+
+Config.lang = {
+    PromptText = "Press",
+    NotAllowed = "you dont have the right job",
 }

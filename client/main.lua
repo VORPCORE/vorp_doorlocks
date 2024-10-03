@@ -45,7 +45,7 @@ end
 local function registerPrompt()
     OpenDoors = UiPromptRegisterBegin()
     UiPromptSetControlAction(OpenDoors, `INPUT_INTERACT_LOCKON_ANIMAL`) -- G by default
-    local str = VarString(10, 'LITERAL_STRING', "Press")
+    local str = VarString(10, 'LITERAL_STRING', Config.lang.PromptText)
     UiPromptSetText(OpenDoors, str)
     UiPromptSetEnabled(OpenDoors, true)
     UiPromptSetVisible(OpenDoors, true)
