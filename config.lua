@@ -41,13 +41,8 @@ Config.Permissions = {
 }
 
 Config.Lockpicks = {
-    ValSheriff = { -- ITEMS HERE CANNOT BE NAMED THE SAME YOU MUST MAKE THEM UNIQUE
-        FrontDoor    = "lockpick1",
-        BackDoor     = "lockpick2",
-        BackJaildoor = "lockpick3",
-        Door1        = "lockpick4",
-        Door2        = "lockpick5",
-        Door3        = "lockpick6"
+    location = {
+        lockpick = "lockpick" -- ITEMS HERE CANNOT BE NAMED THE SAME YOU MUST MAKE THEM UNIQUE
     },
     -- Add more here to make unique door lockpicks
 }

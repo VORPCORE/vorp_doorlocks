@@ -71,7 +71,7 @@ local function loadAnim(dict)
 end
 
 local function startLockPickAnim()
-    local player = PlayerPedId()
+    local player <const> = PlayerPedId()
     loadAnim('script_proc@rustling@unapproved@gate_lockpick')
     TaskPlayAnim(player, 'script_proc@rustling@unapproved@gate_lockpick', 'enter', 1.0, -1.0, 3500, 1, 0, true, 0, false, "", false)
     Wait(3500)
@@ -79,30 +79,43 @@ local function startLockPickAnim()
     TaskPlayAnim(player, 'script_ca@carust@02@ig@ig1_rustlerslockpickingconv01', 'idle_01_smhthug_01', 1.0, -1.0, -1, 1, 0, true, 0, false, "", false)
 end
 
-
-RegisterNetEvent("vorp_doorlocks:Client:lockpickdoor", function(door, item)
-    local value = Config.Doors[door]
-    local dist <const> = GetPlayerDistanceFromCoords(value.Pos.x, value.Pos.y, value.Pos.z)
-    if dist < 2.0 then
-        startLockPickAnim()
-        local result <const> = exports.lockpick:startLockpick(value.Difficulty)
-        if result then
-            if value.Alert then
-                if math.random() < Config.AlertProbability then
-                    TriggerServerEvent("vorp_doorlocks:Server:AlertPolice")
-                end
+local function getDoorForLockPick(item)
+    for door, value in pairs(Config.Doors) do
+        if value.BreakAble and value.BreakAble[item] == item then
+            local distance <const> = GetPlayerDistanceFromCoords(value.Pos.x, value.Pos.y, value.Pos.z)
+            if distance < 2.0 then
+                return true, door
             end
-            TriggerServerEvent("vorp_doorlocks:Server:UpdateDoorState", door, 0)
-        else
-            TriggerServerEvent("vorp_doorlocks:Server:RemoveLockpick", item)
         end
-        Wait(1000)
-        TaskPlayAnim(PlayerPedId(), 'script_proc@rustling@unapproved@gate_lockpick', 'exit', 1.0, -1.0, 2500, 1, 0, true,
-            0, false, "", false)
-        Wait(2500)
-        RemoveAnimDict('script_ca@carust@02@ig@ig1_rustlerslockpickingconv01')
-        RemoveAnimDict('script_proc@rustling@unapproved@gate_lockpick')
     end
+    return false
+end
+
+RegisterNetEvent("vorp_doorlocks:Client:lockpickdoor", function(item)
+    local isLockpick <const>, door <const> = getDoorForLockPick(item)
+    if not isLockpick then return print("not near a door") end -- player is not near any door or the item is not allowed to lockpick
+
+    local value <const> = Config.Doors[door]
+
+    startLockPickAnim()
+
+    local result <const> = exports.lockpick:startLockpick(value.Difficulty)
+    if result then
+        if value.Alert then
+            if math.random() < Config.AlertProbability then
+                TriggerServerEvent("vorp_doorlocks:Server:AlertPolice")
+            end
+        end
+        TriggerServerEvent("vorp_doorlocks:Server:UpdateDoorState", door, 0)
+    else
+        TriggerServerEvent("vorp_doorlocks:Server:RemoveLockpick", item)
+    end
+    Wait(1000)
+    TaskPlayAnim(PlayerPedId(), 'script_proc@rustling@unapproved@gate_lockpick', 'exit', 1.0, -1.0, 2500, 1, 0, true,
+        0, false, "", false)
+    Wait(2500)
+    RemoveAnimDict('script_ca@carust@02@ig@ig1_rustlerslockpickingconv01')
+    RemoveAnimDict('script_proc@rustling@unapproved@gate_lockpick')
 end)
 
 

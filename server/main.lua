@@ -17,15 +17,11 @@ RegisterNetEvent("vorp_doorlocks:Server:UpdateDoorState", function(door, state)
 end)
 
 CreateThread(function()
-    for door, value in pairs(Config.Doors) do
-        if value.BreakAble then
-            for _, item in ipairs(value.BreakAble) do
-                exports.vorp_inventory:registerUsableItem(item, function(data)
-                    TriggerClientEvent("vorp_doorlocks:Client:lockpickdoor", data.source, door, item)
-                    exports.vorp_inventory:closeInventory(data.source)
-                end)
-            end
-        end
+    for _, item in ipairs(Config.Lockpicks) do
+        exports.vorp_inventory:registerUsableItem(item, function(data)
+            TriggerClientEvent("vorp_doorlocks:Client:lockpickdoor", data.source, item)
+            exports.vorp_inventory:closeInventory(data.source)
+        end)
     end
 end)
 
