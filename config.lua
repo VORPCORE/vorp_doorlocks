@@ -5,13 +5,10 @@ Config.DevMode = false        -- Set to false on live servers
 Config.AlertProbability = 0.5 -- 0.5 = 50% chance of alerting police if Config.Doors.Alert is true
 
 Config.Permissions = {
+
     ValSheriff = { -- Name must match config.Doors.Perms
         ValSheriff = true,
         -- Can add as many jobs as you wish
-    },
-    ValMedic = {
-        ValDoctor = true,
-        ValMedic = true,
     },
     BWPolice = {
         BWPolice = true,
@@ -28,19 +25,30 @@ Config.Permissions = {
     ArmSheriff = {
         ArmSheriff = true,
     },
-
+    ValMedic = {
+        ValDoctor = true,
+        ValMedic = true,
+    },
+    StrMedic = {
+        StrDoctor = true,
+        StrMedic = true,
+    },
+    SDMedic = {
+        SDDoctor = true,
+        SDMedic = true,
+    },
     -- Add more here to make unique door permissions
 }
 
 Config.Lockpicks = {
-    ValSheriff = {-- ITEMS HERE CANNOT BE NAMED THE SAME YOU MUST MAKE THEM UNIQUE
-        FrontDoor       = "lockpick1",
-        BackDoor        = "lockpick2",
-        BackJaildoor    = "lockpick3",
-        Door1           = "lockpick4",
-        Door2           = "lockpick5",
-        Door3           = "lockpick6" 
-},
+    ValSheriff = { -- ITEMS HERE CANNOT BE NAMED THE SAME YOU MUST MAKE THEM UNIQUE
+        FrontDoor    = "lockpick1",
+        BackDoor     = "lockpick2",
+        BackJaildoor = "lockpick3",
+        Door1        = "lockpick4",
+        Door2        = "lockpick5",
+        Door3        = "lockpick6"
+    },
     -- Add more here to make unique door lockpicks
 }
 
@@ -221,7 +229,69 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-
+    [3723126486] = {
+        Pos = vector3(2715.9943847656, -1230.2332763672, 49.371280670166),
+        Name = "Front Door 1",
+        DoorState = 1,
+        Permissions = Config.Permissions.SDMedic,
+        BreakAble = false,
+        Difficulty = 3,
+        Alert = true,
+    },
+    [79213682]   = {
+        Pos = vector3(2715.9943847656, -1228.5042724609, 49.371234893799),
+        Name = "Front Door 2",
+        DoorState = 1,
+        Permissions = Config.Permissions.SDMedic,
+        BreakAble = false,
+        Difficulty = 3,
+        Alert = true,
+    },
+    [82263429]   = {
+        Pos = vector3(2726.5541992188, -1234.8221435547, 49.363960266113),
+        Name = "side Door 1",
+        DoorState = 1,
+        Permissions = Config.Permissions.SDMedic,
+        BreakAble = false,
+        Difficulty = 3,
+        Alert = true,
+    },
+    [994323006]  = {
+        Pos = vector3(2724.8232421875, -1234.8221435547, 49.363960266113),
+        Name = "side Door 2",
+        DoorState = 1,
+        Permissions = Config.Permissions.SDMedic,
+        BreakAble = false,
+        Difficulty = 3,
+        Alert = true,
+    },
+    [1289094734] = {
+        Pos = vector3(2727.4340820313, -1229.1629638672, 49.367797851563),
+        Name = "office Door",
+        DoorState = 1,
+        Permissions = Config.Permissions.SDMedic,
+        BreakAble = false,
+        Difficulty = 3,
+        Alert = true,
+    },
+    [586229709]  = {
+        Pos = vector3(2723.953125, -1227.0920410156, 49.367786407471),
+        Name = "inner Door",
+        DoorState = 1,
+        Permissions = Config.Permissions.SDMedic,
+        BreakAble = false,
+        Difficulty = 3,
+        Alert = true,
+    },
+    [1104407261] = {
+        Pos = vector3(2725.1469726563, -1221.6247558594, 49.367805480957),
+        Name = "back Door",
+        DoorState = 1,
+        Permissions = Config.Permissions.SDMedic,
+        BreakAble = false,
+        Difficulty = 3,
+        Alert = true,
+    },
     -- Saint Denis Police Doors
     -- Doors ID
     [1674105116] = {
@@ -391,7 +461,16 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-
+    -- Strawberry doctor
+    [2543619259] = {
+        Pos = vector3(-1802.1118164063, -429.39251708984, 157.83195495605),
+        Name = "Strawberry Doctors",
+        DoorState = 1,
+        Permissions = Config.Permissions.StrMedic,
+        BreakAble = false,
+        Difficulty = 3,
+        Alert = true,
+    },
     -- Strawberry Sheriff Doors
     -- Doors ID
     [1821044729] = {
