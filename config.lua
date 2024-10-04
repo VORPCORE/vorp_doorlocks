@@ -37,11 +37,20 @@ Config.Permissions = {
         shaman =  true,
     },
 	FortWallace = {
-		police = true,
+		ValSheriff = true,
+		BWPolice = true,
+		RhoSheriff = true,
+		SDPolice = true,
+		StrSheriff = true,
+		ArmSheriff = true,
 	},
 	Sisika = {
-		police = true,
+		ValSheriff = true,
+		BWPolice = true,
+		RhoSheriff = true,
 		SDPolice = true,
+		StrSheriff = true,
+		ArmSheriff = true,
 	},
 
 	---- Bank Doors Permission ----
