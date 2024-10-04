@@ -9,7 +9,7 @@ RegisterNetEvent("vorp_doorlocks:Server:UpdateDoorState", function(door, state)
         if not user then return end
         local character = user.getUsedCharacter
         local job = character.job
-        if not value.Permissions[job] then return Core.NotifyObjective("you dont have the right job", 5000) end
+        if not value.Permissions[job] then return Core.NotifyObjective(Config.lang.NotAllowed, 5000) end
     end
 
     Config.Doors[door].state = state -- sync
