@@ -11,7 +11,7 @@ Config.AlertProbability = 0.5 -- 0.5 = 50% chance of alerting police if Config.D
 
 Config.Permissions = {
 
-    ---- Sheriff / Police / Doctor(Medic) Office Doors Permission ----
+    ---- Sheriff, Police, Doctor(Medic), Office  / Fort Wallace(Cavalry) / Sisika Doors Permission ----
     ValSheriff = { -- Name must match config.Doors.Perms
         ValSheriff = true,
         -- Can add as many jobs as you wish
@@ -36,6 +36,13 @@ Config.Permissions = {
         headdoctor = true,
         shaman =  true,
     },
+	FortWallace = {
+		Cavalry = true,
+	},
+	Sisika = {
+		SisikaOfficer = true,
+		SDPolice = true,
+	},
 
 	---- Bank Doors Permission ----
     ValBank = {
@@ -74,6 +81,7 @@ Config.Permissions = {
 		StrSheriff = true,
 		ArmSheriff = true,
     },
+	
     -- Add more here to make unique door permissions
 }
 
@@ -92,7 +100,7 @@ Config.Doors = {
         Name = "Front Door",                                               -- Door Name
         DoorState = 0,                                                     -- Default door State 0 is open 1 is close
         Permissions = Config.Permissions.ValSheriff,                       -- Will use the jobs for this location if false everyone can open and close doors
-        BreakAble = Config.Lockpicks.location.lockpick,                 -- Will use the lockpick item for this location, if false it will not use lockpick and cant be lockpicked
+        BreakAble = Config.Lockpicks.location.lockpick,                    -- Will use the lockpick item for this location, if false it will not use lockpick and cant be lockpicked
         Difficulty = 3,                                                    -- Lockpick Difficulty, how many tries
         Alert = true,
     },
@@ -819,8 +827,138 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
+	
+	-- Fort Wallace Doors
+	-- Doors ID
+    [385812466]  = {
+        Pos = vector3(356.9841003417969, 1463.7022705078125, 178.72654724121094),
+        Name = "Front Gate 1 (Left)",
+        DoorState = 1,
+        Permissions = Config.Permissions.FortWallace,
+        BreakAble = Config.Lockpicks.location,
+        Difficulty = 3,
+        Alert = true,
+    },
+    [3093514944]  = {
+        Pos = vector3(360.2287292480469, 1465.9957275390625, 178.7265625),
+        Name = "Front Gate 2 (Right)",
+        DoorState = 1,
+        Permissions = Config.Permissions.FortWallace,
+        BreakAble = Config.Lockpicks.location,
+        Difficulty = 3,
+        Alert = true,
+    },
+    [1163537966]  = {
+        Pos = vector3(347.78607177734375, 1471.0980224609375, 178.77976989746094),
+        Name = "1th Office Door",
+        DoorState = 1,
+        Permissions = Config.Permissions.FortWallace,
+        BreakAble = Config.Lockpicks.location,
+        Difficulty = 3,
+        Alert = true,
+    },
+    [3489664864]  = {
+        Pos = vector3(337.17095947265625, 1501.4638671875, 180.9113006591797),
+        Name = "2th Office Door",
+        DoorState = 1,
+        Permissions = Config.Permissions.FortWallace,
+        BreakAble = Config.Lockpicks.location,
+        Difficulty = 3,
+        Alert = true,
+    },
+    [4248740658]  = {
+        Pos = vector3(346.23724365234375, 1468.9339599609375, 178.72691345214844),
+        Name = "Cell Door",
+        DoorState = 1,
+        Permissions = Config.Permissions.FortWallace,
+        BreakAble = Config.Lockpicks.location,
+        Difficulty = 3,
+        Alert = true,
+    },
+    [1223148325]  = {
+        Pos = vector3(363.3249206542969, 1488.7296142578125, 179.66148376464844),
+        Name = "Armory Door",
+        DoorState = 1,
+        Permissions = Config.Permissions.FortWallace,
+        BreakAble = Config.Lockpicks.location,
+        Difficulty = 3,
+        Alert = true,
+    },
+    [2977782592]  = {
+        Pos = vector3(359.58148193359375, 1510.486328125, 179.16412353515625),
+        Name = "Stable Back Door",
+        DoorState = 1,
+        Permissions = Config.Permissions.FortWallace,
+        BreakAble = Config.Lockpicks.location,
+        Difficulty = 3,
+        Alert = true,
+    },
+	
+	-- Sisika Doors
+	-- Doors ID
+    [3158090902]  = {
+        Pos = vector3(3349.908935546875, -645.2470703125, 44.35463714599609),
+        Name = "Front Gate 1",
+        DoorState = 1,
+        Permissions = Config.Permissions.Sisika,
+        BreakAble = Config.Lockpicks.location,
+        Difficulty = 3,
+        Alert = true,
+    },
+    [2381465602]  = {
+        Pos = vector3(3350.638671875, -647.97021484375, 44.35463714599609),
+        Name = "Front Gate 2",
+        DoorState = 1,
+        Permissions = Config.Permissions.Sisika,
+        BreakAble = Config.Lockpicks.location,
+        Difficulty = 3,
+        Alert = true,
+    },
+    [2617210026]  = {
+        Pos = vector3(3325.8056640625, -705.5444946289062, 43.38306045532226),
+        Name = "Back Gate 1 (Left)",
+        DoorState = 1,
+        Permissions = Config.Permissions.Sisika,
+        BreakAble = Config.Lockpicks.location,
+        Difficulty = 3,
+        Alert = true,
+    },
+    [3093514944]  = {
+        Pos = vector3(3327.572265625, -707.517822265625, 43.38306045532226),
+        Name = "Back Gate 2 (Right)",
+        DoorState = 1,
+        Permissions = Config.Permissions.Sisika,
+        BreakAble = Config.Lockpicks.location,
+        Difficulty = 3,
+        Alert = true,
+    },
+    [1121239638]  = {
+        Pos = vector3(3331.8154296875, -700.0858764648438, 43.06853103637695),
+        Name = "Back Gate 3 (Left)",
+        DoorState = 1,
+        Permissions = Config.Permissions.Sisika,
+        BreakAble = Config.Lockpicks.location,
+        Difficulty = 3,
+        Alert = true,
+    },
+    [906662604]  = {
+        Pos = vector3(3333.580810546875, -702.0559692382812, 43.06853103637695),
+        Name = "Back Gate 4 (Right)",
+        DoorState = 1,
+        Permissions = Config.Permissions.Sisika,
+        BreakAble = Config.Lockpicks.location,
+        Difficulty = 3,
+        Alert = true,
+    },
+    -- []  = { -- Door Hash Code Not Available
+        -- Pos = vector3(3366.404052734375, -680.526611328125, 45.46665573120117),
+        -- Name = "Door in Siska 1",
+        -- DoorState = 1,
+        -- Permissions = Config.Permissions.Sisika,
+        -- BreakAble = Config.Lockpicks.location,
+        -- Difficulty = 3,
+        -- Alert = true,
+    -- },
+
     -- ADD MORE DOORS HERE
 }
-
-
-
