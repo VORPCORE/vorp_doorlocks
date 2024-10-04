@@ -1,5 +1,10 @@
 Config = {}
 
+Config.lang = {
+    PromptText = "Press",
+    NotAllowed = "you dont have the right job",
+}
+
 Config.DevMode = false        -- Set to false on live servers
 
 Config.AlertProbability = 0.5 -- 0.5 = 50% chance of alerting police if Config.Doors.Alert is true
@@ -535,7 +540,3 @@ Config.Doors = {
 
 
 
-Config.lang = {
-    PromptText = "Press",
-    NotAllowed = "you dont have the right job",
-}
