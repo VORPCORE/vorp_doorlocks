@@ -950,15 +950,6 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    -- []  = { -- Door Hash Code Not Available
-        -- Pos = vector3(3366.404052734375, -680.526611328125, 45.46665573120117),
-        -- Name = "Door in Siska 1",
-        -- DoorState = 1,
-        -- Permissions = Config.Permissions.Sisika,
-        -- BreakAble = Config.Lockpicks.location,
-        -- Difficulty = 3,
-        -- Alert = true,
-    -- },
 
     -- ADD MORE DOORS HERE
 }
