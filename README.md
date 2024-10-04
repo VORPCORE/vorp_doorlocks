@@ -5,9 +5,9 @@ Door locks for your server to control any doors based on jobs, with alert probab
 
 Add these to your `server.cfg` file;
 
-`ensure lockpick`
+- `ensure lockpick`
 
-`ensure vorp_doorlock`
+- `ensure vorp_doorlock`
 
 ### Dependencies 
 
