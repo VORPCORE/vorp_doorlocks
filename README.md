@@ -7,7 +7,7 @@ Add these to your `server.cfg` file;
 
 - `ensure lockpick`
 
-- `ensure vorp_doorlock`
+- `ensure vorp_doorlocks`
 
 ### Dependencies 
 
