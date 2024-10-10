@@ -34,63 +34,63 @@ Config.Permissions = {
     Doctor = {
         doctor = true,
         headdoctor = true,
-        shaman =  true,
+        shaman = true,
     },
-	FortWallace = {
-		ValSheriff = true,
-		BWPolice = true,
-		RhoSheriff = true,
-		SDPolice = true,
-		StrSheriff = true,
-		ArmSheriff = true,
-	},
-	Sisika = {
-		ValSheriff = true,
-		BWPolice = true,
-		RhoSheriff = true,
-		SDPolice = true,
-		StrSheriff = true,
-		ArmSheriff = true,
-	},
+    FortWallace = {
+        ValSheriff = true,
+        BWPolice = true,
+        RhoSheriff = true,
+        SDPolice = true,
+        StrSheriff = true,
+        ArmSheriff = true,
+    },
+    Sisika = {
+        ValSheriff = true,
+        BWPolice = true,
+        RhoSheriff = true,
+        SDPolice = true,
+        StrSheriff = true,
+        ArmSheriff = true,
+    },
 
-	---- Bank Doors Permission ----
+    ---- Bank Doors Permission ----
     ValBank = {
         ValBank = true,
-		ValSheriff = true,
-		BWPolice = true,
-		RhoSheriff = true,
-		SDPolice = true,
-		StrSheriff = true,
-		ArmSheriff = true,
+        ValSheriff = true,
+        BWPolice = true,
+        RhoSheriff = true,
+        SDPolice = true,
+        StrSheriff = true,
+        ArmSheriff = true,
     },
     BWBank = {
         BWBank = true,
-		ValSheriff = true,
-		BWPolice = true,
-		RhoSheriff = true,
-		SDPolice = true,
-		StrSheriff = true,
-		ArmSheriff = true,
+        ValSheriff = true,
+        BWPolice = true,
+        RhoSheriff = true,
+        SDPolice = true,
+        StrSheriff = true,
+        ArmSheriff = true,
     },
     SDBank = {
         SDBank = true,
-		ValSheriff = true,
-		BWPolice = true,
-		RhoSheriff = true,
-		SDPolice = true,
-		StrSheriff = true,
-		ArmSheriff = true,
+        ValSheriff = true,
+        BWPolice = true,
+        RhoSheriff = true,
+        SDPolice = true,
+        StrSheriff = true,
+        ArmSheriff = true,
     },
     RhoBank = {
         RhoBank = true,
-		ValSheriff = true,
-		BWPolice = true,
-		RhoSheriff = true,
-		SDPolice = true,
-		StrSheriff = true,
-		ArmSheriff = true,
+        ValSheriff = true,
+        BWPolice = true,
+        RhoSheriff = true,
+        SDPolice = true,
+        StrSheriff = true,
+        ArmSheriff = true,
     },
-	
+
     -- Add more here to make unique door permissions
 }
 
@@ -591,9 +591,9 @@ Config.Doors = {
         Alert = true,
     },
 
-	-- Valentine Bank Doors
-	-- Doors ID
-    [2642457609]  = {
+    -- Valentine Bank Doors
+    -- Doors ID
+    [2642457609] = {
         Pos = vector3(-309.05206298828125, 779.7301025390625, 117.72991180419922),
         Name = "Front Door 1 (Left)",
         DoorState = 0,
@@ -602,7 +602,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [3886827663]  = {
+    [3886827663] = {
         Pos = vector3(-306.8853454589844, 780.1154174804688, 117.72991180419922),
         Name = "Front Door 2 (Right)",
         DoorState = 0,
@@ -611,7 +611,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [1340831050]  = {
+    [1340831050] = {
         Pos = vector3(-311.7406311035156, 774.6756591796875, 117.72991180419922),
         Name = "Gate to Tellers",
         DoorState = 1,
@@ -620,7 +620,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [3718620420]  = {
+    [3718620420] = {
         Pos = vector3(-311.0597839355469, 770.1240234375, 117.70217895507812),
         Name = "Door Behind Tellers",
         DoorState = 1,
@@ -638,7 +638,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [2343746133]  = {
+    [2343746133] = {
         Pos = vector3(-301.9361877441406, 771.751953125, 117.72990417480469),
         Name = "Door to Backrooms",
         DoorState = 1,
@@ -647,7 +647,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [2307914732]  = {
+    [2307914732] = {
         Pos = vector3(-301.510009765625, 762.9834594726562, 117.77313232421875),
         Name = "Back Door",
         DoorState = 1,
@@ -665,9 +665,9 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-	
-	-- Blackwater Bank Doors
-	-- Doors ID
+
+    -- Blackwater Bank Doors
+    -- Doors ID
     [531022111]  = {
         Pos = vector3(-809.141845703125, -1279.1900634765625, 42.6614990234375),
         Name = "Front Door",
@@ -677,7 +677,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [2817192481]  = {
+    [2817192481] = {
         Pos = vector3(-817.8110961914062, -1277.66845703125, 42.65194320678711),
         Name = "Office Door",
         DoorState = 1,
@@ -686,7 +686,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [2117902999]  = {
+    [2117902999] = {
         Pos = vector3(-816.7252807617188, -1276.7509765625, 42.6412353515625),
         Name = "Teller Gate",
         DoorState = 1,
@@ -695,7 +695,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [1462330364]  = {
+    [1462330364] = {
         Pos = vector3(-817.7865600585938, -1274.38525390625, 42.66213226318359),
         Name = "Vault Door",
         DoorState = 1,
@@ -705,9 +705,9 @@ Config.Doors = {
         Alert = true,
     },
 
-	-- Saint Denis Bank Doors
-	-- Doors ID
-    [2158285782]  = {
+    -- Saint Denis Bank Doors
+    -- Doors ID
+    [2158285782] = {
         Pos = vector3(2637.7978515625, -1298.036376953125, 51.24600982666015),
         Name = "West Entrance (Left)",
         DoorState = 0,
@@ -716,7 +716,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [1733501235]  = {
+    [1733501235] = {
         Pos = vector3(2638.72216796875, -1300.0184326171875, 51.24600982666015),
         Name = "West Entrance (Right)",
         DoorState = 0,
@@ -734,7 +734,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [1634115439]  = {
+    [1634115439] = {
         Pos = vector3(2646.980224609375, -1300.983154296875, 51.24538421630859),
         Name = "Manager's Office (Right)",
         DoorState = 1,
@@ -743,7 +743,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [2817024187]  = {
+    [2817024187] = {
         Pos = vector3(2642.15673828125, -1285.4188232421875, 51.24600982666015),
         Name = "North Entrance (Left)",
         DoorState = 0,
@@ -752,7 +752,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [2089945615]  = {
+    [2089945615] = {
         Pos = vector3(2640.175537109375, -1286.342529296875, 51.24600982666015),
         Name = "North Entrance (Right)",
         DoorState = 0,
@@ -761,7 +761,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [1751238140]  = {
+    [1751238140] = {
         Pos = vector3(2643.300537109375, -1300.4267578125, 51.25582504272461),
         Name = "Vault Door",
         DoorState = 1,
@@ -770,10 +770,10 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-	
-	-- Rhodes Bank Doors
-	-- Doors ID
-    [3317756151]  = {
+
+    -- Rhodes Bank Doors
+    -- Doors ID
+    [3317756151] = {
         Pos = vector3(1296.27197265625, -1299.0120849609375, 76.03963470458984),
         Name = "Front Door 1 (Left)",
         DoorState = 0,
@@ -782,7 +782,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [3088209306]  = {
+    [3088209306] = {
         Pos = vector3(1294.595703125, -1297.583740234375, 76.03963470458984),
         Name = "Front Door 2 (Right)",
         DoorState = 0,
@@ -791,7 +791,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [2058564250]  = {
+    [2058564250] = {
         Pos = vector3(1285.1475830078125, -1303.1185302734375, 76.04006958007812),
         Name = "Door to Backrooms",
         DoorState = 1,
@@ -800,7 +800,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [1634148892]  = {
+    [1634148892] = {
         Pos = vector3(1295.734130859375, -1305.474853515625, 76.03300476074219),
         Name = "Teller Gate",
         DoorState = 1,
@@ -809,7 +809,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [3483244267]  = {
+    [3483244267] = {
         Pos = vector3(1282.536376953125, -1309.31591796875, 76.03642272949219),
         Name = "Vault Door",
         DoorState = 1,
@@ -818,7 +818,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [3142122679]  = {
+    [3142122679] = {
         Pos = vector3(1278.85595703125, -1310.403076171875, 76.03964233398438),
         Name = "Back Door",
         DoorState = 1,
@@ -827,8 +827,8 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [2513778780]  = {
-        Pos = vector3(1279.4113769531,-1311.4263916016,76.03205871582),
+    [2513778780] = {
+        Pos = vector3(1279.4113769531, -1311.4263916016, 76.03205871582),
         Name = "Back Door 2",
         DoorState = 1,
         Permissions = Config.Permissions.RhoBank,
@@ -836,9 +836,9 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-	
-	-- Fort Wallace Doors
-	-- Doors ID
+
+    -- Fort Wallace Doors
+    -- Doors ID
     [385812466]  = {
         Pos = vector3(356.9841003417969, 1463.7022705078125, 178.72654724121094),
         Name = "Front Gate 1 (Left)",
@@ -848,7 +848,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [3093514944]  = {
+    --[[     [3093514944]  = { -- id is wrong
         Pos = vector3(360.2287292480469, 1465.9957275390625, 178.7265625),
         Name = "Front Gate 2 (Right)",
         DoorState = 0,
@@ -856,8 +856,8 @@ Config.Doors = {
         BreakAble = Config.Lockpicks.location,
         Difficulty = 3,
         Alert = true,
-    },
-    [1163537966]  = {
+    }, ]]
+    [1163537966] = {
         Pos = vector3(347.78607177734375, 1471.0980224609375, 178.77976989746094),
         Name = "1th Office Door",
         DoorState = 0,
@@ -866,7 +866,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [3489664864]  = {
+    [3489664864] = {
         Pos = vector3(337.17095947265625, 1501.4638671875, 180.9113006591797),
         Name = "2th Office Door",
         DoorState = 0,
@@ -875,7 +875,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [4248740658]  = {
+    [4248740658] = {
         Pos = vector3(346.23724365234375, 1468.9339599609375, 178.72691345214844),
         Name = "Cell Door",
         DoorState = 1,
@@ -884,7 +884,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [1223148325]  = {
+    [1223148325] = {
         Pos = vector3(363.3249206542969, 1488.7296142578125, 179.66148376464844),
         Name = "Armory Door",
         DoorState = 1,
@@ -893,7 +893,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [2977782592]  = {
+    [2977782592] = {
         Pos = vector3(359.58148193359375, 1510.486328125, 179.16412353515625),
         Name = "Stable Back Door",
         DoorState = 1,
@@ -902,10 +902,10 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-	
-	-- Sisika Doors
-	-- Doors ID
-    [3158090902]  = {
+
+    -- Sisika Doors
+    -- Doors ID
+    [3158090902] = {
         Pos = vector3(3349.908935546875, -645.2470703125, 44.35463714599609),
         Name = "Front Gate 1",
         DoorState = 0,
@@ -914,7 +914,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [2381465602]  = {
+    [2381465602] = {
         Pos = vector3(3350.638671875, -647.97021484375, 44.35463714599609),
         Name = "Front Gate 2",
         DoorState = 0,
@@ -923,7 +923,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [2617210026]  = {
+    [2617210026] = {
         Pos = vector3(3325.8056640625, -705.5444946289062, 43.38306045532226),
         Name = "Back Gate 1 (Left)",
         DoorState = 1,
@@ -932,7 +932,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [3093514944]  = {
+    [3093514944] = {
         Pos = vector3(3327.572265625, -707.517822265625, 43.38306045532226),
         Name = "Back Gate 2 (Right)",
         DoorState = 1,
@@ -941,7 +941,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [1121239638]  = {
+    [1121239638] = {
         Pos = vector3(3331.8154296875, -700.0858764648438, 43.06853103637695),
         Name = "Back Gate 3 (Left)",
         DoorState = 1,
