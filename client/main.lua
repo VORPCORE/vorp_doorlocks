@@ -96,7 +96,8 @@ RegisterNetEvent("vorp_doorlocks:Client:lockpickdoor", function(item)
     if not isLockpick then return print("not near a door") end -- player is not near any door or the item is not allowed to lockpick
 
     local value <const> = Config.Doors[door]
-
+    -- door state ?
+    if value.DoorState == 0 then return print("door is already open") end -- door is already open
     startLockPickAnim()
 
     local result <const> = exports.lockpick:startLockpick(value.Difficulty)
@@ -195,7 +196,7 @@ end)
 AddEventHandler("onClientResourceStart", function(resource)
     if GetCurrentResourceName() ~= resource then return end
     if not Config.DevMode then return end
-
+    repeat Wait(2000) until LocalPlayer.state.IsInSession
     manageDoorState()
     registerPrompt()
     addDoorsToSystem()
