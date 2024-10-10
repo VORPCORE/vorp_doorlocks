@@ -155,6 +155,8 @@ local function manageDoorState()
             local job = LocalPlayer.state.Character.Job
             if value.Permissions[job] then
                 value.isAllowed = true
+            else
+                value.isAllowed = false
             end
         else
             value.isAllowed = true
@@ -163,6 +165,7 @@ local function manageDoorState()
 end
 
 RegisterNetEvent("vorp_doorlocks:Client:UpdatePerms", function()
+    Wait(1000)
     manageDoorState()
 end)
 
