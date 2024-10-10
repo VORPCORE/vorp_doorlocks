@@ -17,7 +17,7 @@ RegisterNetEvent("vorp_doorlocks:Server:UpdateDoorState", function(door, state)
 end)
 
 CreateThread(function()
-    for _, item in ipairs(Config.Lockpicks) do
+    for _, item in pairs(Config.Lockpicks) do
         exports.vorp_inventory:registerUsableItem(item, function(data)
             TriggerClientEvent("vorp_doorlocks:Client:lockpickdoor", data.source, item)
             exports.vorp_inventory:closeInventory(data.source)
