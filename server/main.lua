@@ -1,10 +1,10 @@
 local Core = exports.vorp_core:GetCore()
 
-RegisterNetEvent("vorp_doorlocks:Server:UpdateDoorState", function(door, state)
+RegisterNetEvent("vorp_doorlocks:Server:UpdateDoorState", function(door, state, isLockPicked)
     local _source <const> = source
 
     local value = Config.Doors[door]
-    if value and value.Permissions then
+    if not isLockPicked and value and value.Permissions then
         local user = Core.getUser(_source)
         if not user then return end
         local character = user.getUsedCharacter
@@ -29,7 +29,12 @@ end)
 
 RegisterNetEvent("vorp_doorlocks:Server:AlertPolice", function()
     local _source <const> = source
-    --todo needs to alert vorp police
+    --TODO: only closest player ? show on map where it was?
+    for index, value in ipairs(GetPlayers()) do
+        if Player(tonumber(value)).state.isPoliceDuty then
+            Core.NotifyLeft(tonumber(value), "Police Alert", "Someone lockpicked a door", "inventory_items", "provision_sheriff_star", 5000, "COLOR_WHITE")
+        end
+    end
 end)
 
 -- remove item

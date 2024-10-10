@@ -81,6 +81,7 @@ local function startLockPickAnim()
 end
 
 local function getDoorForLockPick(item)
+    local job = LocalPlayer.state.Character.Job
     for door, value in pairs(Config.Doors) do
         if value.BreakAble and value.BreakAble == item then
             local distance <const> = GetPlayerDistanceFromCoords(value.Pos.x, value.Pos.y, value.Pos.z)
@@ -108,7 +109,7 @@ RegisterNetEvent("vorp_doorlocks:Client:lockpickdoor", function(item)
                 TriggerServerEvent("vorp_doorlocks:Server:AlertPolice")
             end
         end
-        TriggerServerEvent("vorp_doorlocks:Server:UpdateDoorState", door, 0)
+        TriggerServerEvent("vorp_doorlocks:Server:UpdateDoorState", door, 0, true)
     else
         TriggerServerEvent("vorp_doorlocks:Server:RemoveLockpick", item)
     end
