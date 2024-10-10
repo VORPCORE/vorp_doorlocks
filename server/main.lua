@@ -3,7 +3,7 @@ local Core = exports.vorp_core:GetCore()
 local function isCloseToDoor(playerPed, door)
     local coords = GetEntityCoords(playerPed)
     local distance = #(coords - door.Pos)
-    return distance < 3.0
+    return distance <= 3.0
 end
 
 RegisterNetEvent("vorp_doorlocks:Server:UpdateDoorState", function(door, state, isLockPicked)
