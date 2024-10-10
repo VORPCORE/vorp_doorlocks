@@ -1,5 +1,6 @@
 local PromptGroup1 <const> = GetRandomIntInRange(0, 0xffffff)
 local OpenDoors = 0
+local Core = exports.vorp_core:GetCore()
 
 local function loadModel(model)
     if not HasModelLoaded(model) then
@@ -81,7 +82,7 @@ end
 
 local function getDoorForLockPick(item)
     for door, value in pairs(Config.Doors) do
-        if value.BreakAble and value.BreakAble[item] == item then
+        if value.BreakAble and value.BreakAble == item then
             local distance <const> = GetPlayerDistanceFromCoords(value.Pos.x, value.Pos.y, value.Pos.z)
             if distance < 2.0 then
                 return true, door
@@ -93,11 +94,11 @@ end
 
 RegisterNetEvent("vorp_doorlocks:Client:lockpickdoor", function(item)
     local isLockpick <const>, door <const> = getDoorForLockPick(item)
-    if not isLockpick then return print("not near a door") end -- player is not near any door or the item is not allowed to lockpick
+    if not isLockpick then return Core.NotifyObjective("not near a door or this dont cant be lockpicked", 2000) end -- player is not near any door or the item is not allowed to lockpick
 
     local value <const> = Config.Doors[door]
     -- door state ?
-    if value.DoorState == 0 then return print("door is already open") end -- door is already open
+    if value.DoorState == 0 then return Core.NotifyObjective("door is already open", 5000) end -- door is already open
     startLockPickAnim()
 
     local result <const> = exports.lockpick:startLockpick(value.Difficulty)
@@ -112,8 +113,7 @@ RegisterNetEvent("vorp_doorlocks:Client:lockpickdoor", function(item)
         TriggerServerEvent("vorp_doorlocks:Server:RemoveLockpick", item)
     end
     Wait(1000)
-    TaskPlayAnim(PlayerPedId(), 'script_proc@rustling@unapproved@gate_lockpick', 'exit', 1.0, -1.0, 2500, 1, 0, true,
-        0, false, "", false)
+    TaskPlayAnim(PlayerPedId(), 'script_proc@rustling@unapproved@gate_lockpick', 'exit', 1.0, -1.0, 2500, 1, 0, true, 0, false, "", false)
     Wait(2500)
     RemoveAnimDict('script_ca@carust@02@ig@ig1_rustlerslockpickingconv01')
     RemoveAnimDict('script_proc@rustling@unapproved@gate_lockpick')
