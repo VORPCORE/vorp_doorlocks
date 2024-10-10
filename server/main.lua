@@ -9,19 +9,21 @@ RegisterNetEvent("vorp_doorlocks:Server:UpdateDoorState", function(door, state)
         if not user then return end
         local character = user.getUsedCharacter
         local job = character.job
-        if not value.Permissions[job] then return Core.NotifyObjective(Config.lang.NotAllowed, 5000) end
+        if not value.Permissions[job] then return Core.NotifyObjective(_source, Config.lang.NotAllowed, 5000) end
     end
 
-    Config.Doors[door].state = state -- sync
+    Config.Doors[door].DoorState = state -- sync
     TriggerClientEvent("vorp_doorlocks:Client:UpdateDoorState", -1, door, state)
 end)
 
 CreateThread(function()
-    for _, item in pairs(Config.Lockpicks) do
-        exports.vorp_inventory:registerUsableItem(item, function(data)
-            TriggerClientEvent("vorp_doorlocks:Client:lockpickdoor", data.source, item)
-            exports.vorp_inventory:closeInventory(data.source)
-        end)
+    for _, value in pairs(Config.Lockpicks) do
+        for _, item in pairs(value) do
+            exports.vorp_inventory:registerUsableItem(item, function(data)
+                TriggerClientEvent("vorp_doorlocks:Client:lockpickdoor", data.source, item)
+                exports.vorp_inventory:closeInventory(data.source)
+            end)
+        end
     end
 end)
 
