@@ -2,9 +2,20 @@ Config = {}
 
 Config.lang = {
     PromptText = "Press",
-    NotAllowed = "You dont have the right job",
+    NotAllowed = "You don't have the right job",
+    GradeNotalowed = "You don't have the right grade",
+    Notneardoor = "You are not near a door or this door can't be lockpicked",
+    Alreadyopen = "The door is already open",
+    HackAttempt = "Player %s (ID: %d) was not close to the door, possible hack attempt",
+    Alerts = {
+        PoliceAlertTitle = "Police Alert",            
+        PoliceAlertMessage = "Someone lockpicked a door", 
+        PoliceAlertIcon = "inventory_items",          
+        PoliceAlertPicture = "provision_sheriff_star", 
+        PoliceAlertColor = "COLOR_WHITE",             
+        PoliceAlertDuration = 5000                    
+    }
 }
-
 Config.DevMode = false        -- Set to false on live servers
 
 Config.AlertProbability = 0.5 -- 0.5 = 50% chance of alerting police if Config.Doors.Alert is true
