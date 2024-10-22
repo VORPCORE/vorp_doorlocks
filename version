@@ -1,1 +1,5 @@
+<0.2>
+- added support for grades this allows to lock/unlock certain doors to certain grades
+- config was changed it now uses numbers instead of booleans if you add grade 0 then anyone above or with grade 0 can open the door and close
+- update all files including fxmanifest.lua
 <0.1>
