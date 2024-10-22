@@ -1,7 +1,7 @@
 local Core = exports.vorp_core:GetCore()
 
 local function isCloseToDoor(playerPed, door)
-    local coords = GetEntityCoords(playerPed)
+    local coords <const> = GetEntityCoords(playerPed)
     local distance = #(coords - door.Pos)
     return distance <= 3.0
 end
@@ -9,18 +9,25 @@ end
 RegisterNetEvent("vorp_doorlocks:Server:UpdateDoorState", function(door, state, isLockPicked)
     local _source <const> = source
 
-    local value = Config.Doors[door]
+    local value <const> = Config.Doors[door]
 
     if value and not isCloseToDoor(GetPlayerPed(_source), value) then
         return print("Player was not close to the door possible hack attempt", "player id", _source, "playername", GetPlayerName(_source))
     end
 
     if not isLockPicked and value and value.Permissions then
-        local user = Core.getUser(_source)
+        local user <const> = Core.getUser(_source)
         if not user then return end
-        local character = user.getUsedCharacter
-        local job = character.job
-        if not value.Permissions[job] then return Core.NotifyObjective(_source, Config.lang.NotAllowed, 5000) end
+        local character <const> = user.getUsedCharacter
+        local job <const> = character.job
+        local grade <const> = character.jobGrade
+        if not value.Permissions[job] then
+            return Core.NotifyObjective(_source, Config.lang.NotAllowed, 5000)
+        end
+
+        if value.Permissions[job] < grade then
+            return Core.NotifyObjective(_source, "your grade doesnt allow to open door", 5000)
+        end
     end
 
     value.DoorState = state -- sync

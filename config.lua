@@ -10,92 +10,90 @@ Config.DevMode = false        -- Set to false on live servers
 Config.AlertProbability = 0.5 -- 0.5 = 50% chance of alerting police if Config.Doors.Alert is true
 
 Config.Permissions = {
-
-    ---- Sheriff, Police, Doctor(Medic), Office  / Fort Wallace(Cavalry) / Sisika Doors Permission ----
-    ValSheriff = { -- Name must match config.Doors.Perms
-        ValSheriff = true,
+    -- police
+    ValSheriff = {      -- Name must match config.Doors.Perms
+        ValSheriff = 2, -- job name + grade if grade is 0 then anything above 0 has permissions if frade is 2 then anything above 2 has permissions
         -- Can add as many jobs as you wish
     },
     BWPolice = {
-        BWPolice = true,
+        BWPolice = 0,
     },
     RhoSheriff = {
-        RhoSheriff = true,
+        RhoSheriff = 0,
     },
     SDPolice = {
-        SDPolice = true,
+        SDPolice = 2,
     },
     StrSheriff = {
-        StrSheriff = true,
+        StrSheriff = 2,
     },
     ArmSheriff = {
-        ArmSheriff = true,
+        ArmSheriff = 0,
     },
+    -- medic
     Doctor = {
-        doctor = true,
-        headdoctor = true,
-        shaman = true,
+        doctor = 0,
+        headdoctor = 0,
+        shaman = 0,
     },
+    -- fort
     FortWallace = {
-        ValSheriff = true,
-        BWPolice = true,
-        RhoSheriff = true,
-        SDPolice = true,
-        StrSheriff = true,
-        ArmSheriff = true,
+        ValSheriff = 0,
+        BWPolice = 0,
+        RhoSheriff = 0,
+        SDPolice = 0,
+        StrSheriff = 0,
+        ArmSheriff = 0,
     },
+    -- prison
     Sisika = {
-        ValSheriff = true,
-        BWPolice = true,
-        RhoSheriff = true,
-        SDPolice = true,
-        StrSheriff = true,
-        ArmSheriff = true,
+        ValSheriff = 0,
+        BWPolice = 0,
+        RhoSheriff = 0,
+        SDPolice = 0,
+        StrSheriff = 0,
+        ArmSheriff = 0,
     },
 
     ---- Bank Doors Permission ----
     ValBank = {
-        ValBank = true,
-        ValSheriff = true,
-        BWPolice = true,
-        RhoSheriff = true,
-        SDPolice = true,
-        StrSheriff = true,
-        ArmSheriff = true,
+        ValSheriff = 0,
+        BWPolice = 0,
+        RhoSheriff = 0,
+        SDPolice = 0,
+        StrSheriff = 0,
+        ArmSheriff = 0,
     },
     BWBank = {
-        BWBank = true,
-        ValSheriff = true,
-        BWPolice = true,
-        RhoSheriff = true,
-        SDPolice = true,
-        StrSheriff = true,
-        ArmSheriff = true,
+        ValSheriff = 0,
+        BWPolice = 0,
+        RhoSheriff = 0,
+        SDPolice = 0,
+        StrSheriff = 0,
+        ArmSheriff = 0,
     },
     SDBank = {
-        SDBank = true,
-        ValSheriff = true,
-        BWPolice = true,
-        RhoSheriff = true,
-        SDPolice = true,
-        StrSheriff = true,
-        ArmSheriff = true,
+        ValSheriff = 0,
+        BWPolice = 0,
+        RhoSheriff = 0,
+        SDPolice = 0,
+        StrSheriff = 0,
+        ArmSheriff = 0,
     },
     RhoBank = {
-        RhoBank = true,
-        ValSheriff = true,
-        BWPolice = true,
-        RhoSheriff = true,
-        SDPolice = true,
-        StrSheriff = true,
-        ArmSheriff = true,
+        ValSheriff = 0,
+        BWPolice = 0,
+        RhoSheriff = 0,
+        SDPolice = 0,
+        StrSheriff = 0,
+        ArmSheriff = 0,
     },
 
     -- Add more here to make unique door permissions
 }
 
 Config.Lockpicks = {
-    location = {
+    location = {              -- unique location name to be used at Config.Doors.BreakAble
         lockpick = "lockpick" -- ITEMS HERE CANNOT BE NAMED THE SAME YOU MUST MAKE THEM UNIQUE
     },
     -- Add more here to make unique door lockpicks
@@ -848,7 +846,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [3093514944]  = {
+    [3093514944] = {
         Pos = vector3(360.2287292480469, 1465.9957275390625, 178.7265625),
         Name = "Front Gate 2 (Right)",
         DoorState = 0,

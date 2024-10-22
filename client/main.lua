@@ -81,7 +81,6 @@ local function startLockPickAnim()
 end
 
 local function getDoorForLockPick(item)
-    local job = LocalPlayer.state.Character.Job
     for door, value in pairs(Config.Doors) do
         if value.BreakAble and value.BreakAble == item then
             local distance <const> = GetPlayerDistanceFromCoords(value.Pos.x, value.Pos.y, value.Pos.z)
@@ -95,11 +94,10 @@ end
 
 RegisterNetEvent("vorp_doorlocks:Client:lockpickdoor", function(item)
     local isLockpick <const>, door <const> = getDoorForLockPick(item)
-    if not isLockpick then return Core.NotifyObjective("not near a door or this dont cant be lockpicked", 2000) end -- player is not near any door or the item is not allowed to lockpick
+    if not isLockpick then return Core.NotifyObjective("not near a door or this door cant' be lockpicked", 2000) end
 
     local value <const> = Config.Doors[door]
-    -- door state ?
-    if value.DoorState == 0 then return Core.NotifyObjective("door is already open", 5000) end -- door is already open
+    if value.DoorState == 0 then return Core.NotifyObjective("door is already open", 5000) end
     startLockPickAnim()
 
     local result <const> = exports.lockpick:startLockpick(value.Difficulty)
@@ -125,7 +123,7 @@ local function ThreadHandler()
     while true do
         local sleep = 1000
         for door, v in pairs(Config.Doors) do
-            if v.isAllowed then -- dont show prompt if player is not allowed to open the door
+            if v.isAllowed then
                 local distance = GetPlayerDistanceFromCoords(v.Pos.x, v.Pos.y, v.Pos.z)
                 if distance < 1.5 then
                     sleep = 0
@@ -153,7 +151,8 @@ local function manageDoorState()
     for key, value in pairs(Config.Doors) do
         if value.Permissions then
             local job = LocalPlayer.state.Character.Job
-            if value.Permissions[job] then
+            local grade = LocalPlayer.state.Character.JobGrade
+            if value.Permissions[job] and value.Permissions[job] >= grade then
                 value.isAllowed = true
             else
                 value.isAllowed = false
