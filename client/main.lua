@@ -94,10 +94,10 @@ end
 
 RegisterNetEvent("vorp_doorlocks:Client:lockpickdoor", function(item)
     local isLockpick <const>, door <const> = getDoorForLockPick(item)
-    if not isLockpick then return Core.NotifyObjective("not near a door or this door cant' be lockpicked", 2000) end
+    if not isLockpick then return Core.NotifyObjective(Config.lang.Notneardoor, 2000) end
 
     local value <const> = Config.Doors[door]
-    if value.DoorState == 0 then return Core.NotifyObjective("door is already open", 5000) end
+    if value.DoorState == 0 then return Core.NotifyObjective(Config.lang.Alreadyopen, 5000) end
     startLockPickAnim()
 
     local result <const> = exports.lockpick:startLockpick(value.Difficulty)
