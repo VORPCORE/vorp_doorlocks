@@ -149,7 +149,7 @@ end
 
 local function manageDoorState()
     for key, value in pairs(Config.Doors) do
-        if value.Permissions then
+        if value.Permissions  then
             local job = LocalPlayer.state.Character.Job
             local grade = LocalPlayer.state.Character.Grade
             if value.Permissions[job] and value.Permissions[job] >= grade then
@@ -164,6 +164,7 @@ local function manageDoorState()
 end
 
 RegisterNetEvent("vorp_doorlocks:Client:UpdatePerms", function()
+    if not LocalPlayer.state.IsInSession then return end
     Wait(1000)
     manageDoorState()
 end)
