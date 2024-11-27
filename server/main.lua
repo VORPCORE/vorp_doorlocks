@@ -25,7 +25,7 @@ RegisterNetEvent("vorp_doorlocks:Server:UpdateDoorState", function(door, state, 
             return Core.NotifyObjective(_source, Config.lang.NotAllowed, 5000)
         end
 
-        if value.Permissions[job] < grade then
+        if  grade < value.Permissions[job]  then
             return Core.NotifyObjective(_source, Config.lang.GradeNotalowed, 5000)
         end
     end
