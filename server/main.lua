@@ -25,7 +25,7 @@ RegisterNetEvent("vorp_doorlocks:Server:UpdateDoorState", function(door, state, 
             return Core.NotifyObjective(_source, Config.lang.NotAllowed, 5000)
         end
 
-        if  grade < value.Permissions[job]  then
+        if grade < value.Permissions[job] then
             return Core.NotifyObjective(_source, Config.lang.GradeNotalowed, 5000)
         end
     end
@@ -71,6 +71,7 @@ AddEventHandler("vorp:SelectedCharacter", function(source, character)
     for key, value in pairs(Config.Doors) do
         gatherStates[key] = value.DoorState
     end
+
     local data <const> = msgpack.pack(gatherStates)
     TriggerClientEvent("vorp_doorlocks:Client:Sync", source, data)
 end)

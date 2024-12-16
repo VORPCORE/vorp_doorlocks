@@ -124,10 +124,10 @@ local function ThreadHandler()
         local sleep = 1000
         for door, v in pairs(Config.Doors) do
             if v.isAllowed then
-                local distance = GetPlayerDistanceFromCoords(v.Pos.x, v.Pos.y, v.Pos.z)
+                local distance <const> = GetPlayerDistanceFromCoords(v.Pos.x, v.Pos.y, v.Pos.z)
                 if distance < 1.5 then
                     sleep = 0
-                    local label = VarString(10, 'LITERAL_STRING', v.Name .. " " .. (v.DoorState == 0 and "Open" or "Close"))
+                    local label <const> = VarString(10, 'LITERAL_STRING', v.Name .. " " .. (v.DoorState == 0 and "Open" or "Close"))
                     UiPromptSetActiveGroupThisFrame(PromptGroup1, label, 0, 0, 0, 0)
 
                     if UiPromptIsJustPressed(OpenDoors) then
@@ -149,10 +149,10 @@ end
 
 local function manageDoorState()
     for key, value in pairs(Config.Doors) do
-        if value.Permissions  then
-            local job = LocalPlayer.state.Character.Job
-            local grade = LocalPlayer.state.Character.Grade
-            if value.Permissions[job] and  grade >= value.Permissions[job] then
+        if value.Permissions then
+            local job <const> = LocalPlayer.state.Character.Job
+            local grade <const> = LocalPlayer.state.Character.Grade
+            if value.Permissions[job] and grade >= value.Permissions[job] then
                 value.isAllowed = true
             else
                 value.isAllowed = false
@@ -190,6 +190,7 @@ RegisterNetEvent("vorp_doorlocks:Client:Sync", function(data)
         DoorSystemSetDoorState(door, state)
     end
 
+    repeat Wait(2000) until LocalPlayer.state.Character
     manageDoorState()
     registerPrompt()
     addDoorsToSystem()
