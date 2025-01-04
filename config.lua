@@ -967,7 +967,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    --[[    [1121239638] = {
+    [3984556459] = {
         Pos = vector3(3331.8154296875, -700.0858764648438, 43.06853103637695),
         Name = "Back Gate 3 (Left)",
         DoorState = 1,
@@ -975,7 +975,7 @@ Config.Doors = {
         BreakAble = Config.Lockpicks.location,
         Difficulty = 3,
         Alert = true,
-    }, ]]
+    },
     [906662604] = {
         Pos = vector3(3333.580810546875, -702.0559692382812, 43.06853103637695),
         Name = "Back Gate 4 (Right)",
