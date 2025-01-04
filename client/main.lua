@@ -92,7 +92,7 @@ local function getDoorForLockPick(item)
     return false
 end
 
-RegisterNetEvent("vorp_doorlocks:Client:lockpickdoor", function(item)
+RegisterNetEvent("vorp_doorlocks:Client:lockpickdoor", function(item, id)
     local isLockpick <const>, door <const> = getDoorForLockPick(item)
     if not isLockpick then return Core.NotifyObjective(Config.lang.Notneardoor, 2000) end
 
@@ -104,12 +104,12 @@ RegisterNetEvent("vorp_doorlocks:Client:lockpickdoor", function(item)
     if result then
         if value.Alert then
             if math.random() < Config.AlertProbability then
-                TriggerServerEvent("vorp_doorlocks:Server:AlertPolice")
+                TriggerServerEvent("vorp_doorlocks:Server:AlertPolice", door)
             end
         end
         TriggerServerEvent("vorp_doorlocks:Server:UpdateDoorState", door, 0, true)
     else
-        TriggerServerEvent("vorp_doorlocks:Server:RemoveLockpick", item)
+        TriggerServerEvent("vorp_doorlocks:Server:RemoveLockpick", id)
     end
     Wait(1000)
     TaskPlayAnim(PlayerPedId(), 'script_proc@rustling@unapproved@gate_lockpick', 'exit', 1.0, -1.0, 2500, 1, 0, true, 0, false, "", false)
@@ -147,24 +147,38 @@ local function ThreadHandler()
     end
 end
 
+
 local function manageDoorState()
     for key, value in pairs(Config.Doors) do
+        local isAllowed = true -- default to allowed if both unique and general permissions are not specified
+
+        if value.UniquePermissions then
+            local charid <const> = LocalPlayer.state.Character.CharId
+            if not value.UniquePermissions[charid] then
+                isAllowed = false
+            end
+        end
+
         if value.Permissions then
             local job <const> = LocalPlayer.state.Character.Job
             local grade <const> = LocalPlayer.state.Character.Grade
-            if value.Permissions[job] and grade >= value.Permissions[job] then
-                value.isAllowed = true
-            else
-                value.isAllowed = false
+            if not (value.Permissions[job] and grade >= value.Permissions[job]) then
+                isAllowed = false
             end
-        else
-            value.isAllowed = true
         end
+
+        value.isAllowed = isAllowed
     end
 end
 
-RegisterNetEvent("vorp_doorlocks:Client:UpdatePerms", function()
+RegisterNetEvent("vorp_doorlocks:Client:UpdatePerms", function(perms)
     if not LocalPlayer.state.IsInSession then return end
+
+    if perms then
+        Config.Doors[perms.door].isAllowed = perms.isAllowed
+        return
+    end
+
     Wait(1000)
     manageDoorState()
 end)
@@ -191,6 +205,7 @@ RegisterNetEvent("vorp_doorlocks:Client:Sync", function(data)
     end
 
     repeat Wait(2000) until LocalPlayer.state.Character
+
     manageDoorState()
     registerPrompt()
     addDoorsToSystem()
@@ -201,9 +216,53 @@ end)
 AddEventHandler("onClientResourceStart", function(resource)
     if GetCurrentResourceName() ~= resource then return end
     if not Config.DevMode then return end
+
     repeat Wait(2000) until LocalPlayer.state.IsInSession
     manageDoorState()
     registerPrompt()
     addDoorsToSystem()
     CreateThread(ThreadHandler)
+end)
+
+-- get door id by distance
+exports('getDoorIdByDistance', function(dist)
+    for door, value in pairs(Config.Doors) do
+        local distance <const> = GetPlayerDistanceFromCoords(value.Pos.x, value.Pos.y, value.Pos.z)
+        if distance < (dist or 1.5) then
+            return door
+        end
+    end
+end)
+
+--get door id by exact coords?
+exports('getDoorIdByDoorCoords', function(x, y, z)
+    for door, value in pairs(Config.Doors) do
+        if value.Pos.x == x and value.Pos.y == y and value.Pos.z == z then
+            return door
+        end
+    end
+end)
+
+-- get doorid by name you can use unique names for doors this is useful instead of getting by distance
+exports('getDoorIdByName', function(name)
+    for door, value in pairs(Config.Doors) do
+        local match = value.Name:match(name)
+        if match then
+            return door
+        end
+    end
+end)
+
+exports('getDoorState', function(door)
+    if not Config.Doors[door] then return end
+    return Config.Doors[door].DoorState
+end)
+
+-- will still check for permissions
+exports('setDoorState', function(door, state)
+    if not Config.Doors[door] then return print("no door exists with this id", door) end
+
+    if Config.Doors[door].DoorState == state then return print("door already is on this state", state) end
+
+    TriggerServerEvent("vorp_doorlocks:Server:UpdateDoorState", door, state)
 end)

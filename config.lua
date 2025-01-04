@@ -1,5 +1,7 @@
 Config = {}
 
+Config.DevMode = false -- Set to false on live servers
+
 Config.lang = {
     PromptText = "Press",
     NotAllowed = "You don't have the right job",
@@ -8,21 +10,23 @@ Config.lang = {
     Alreadyopen = "The door is already open",
     HackAttempt = "Player %s (ID: %d) was not close to the door, possible hack attempt",
     Alerts = {
-        PoliceAlertTitle = "Police Alert",            
-        PoliceAlertMessage = "Someone lockpicked a door", 
-        PoliceAlertIcon = "inventory_items",          
-        PoliceAlertPicture = "provision_sheriff_star", 
-        PoliceAlertColor = "COLOR_WHITE",             
-        PoliceAlertDuration = 5000                    
+        PoliceAlertTitle = "Police Alert",
+        PoliceAlertMessage = "Someone lockpicked a door",
+        PoliceAlertIcon = "inventory_items",
+        PoliceAlertPicture = "provision_sheriff_star",
+        PoliceAlertColor = "COLOR_WHITE",
+        PoliceAlertDuration = 5000
     }
 }
-Config.DevMode = false        -- Set to false on live servers
+
+Config.MinAlert = 4           -- alert 4 closest on duty officers
 
 Config.AlertProbability = 0.5 -- 0.5 = 50% chance of alerting police if Config.Doors.Alert is true
 
+-- assing permissions and avoid code repetition it uses jobs and grades
 Config.Permissions = {
     -- police
-    ValSheriff = {      -- Name must match config.Doors.Perms
+    ValSheriff = {      -- Name must match config.Doors.Perms can be any name it doesnt matter as long is unique in here
         ValSheriff = 2, -- job name + grade if grade is 0 then anything above 0 has permissions if frade is 2 then anything above 2 has permissions
         -- Can add as many jobs as you wish
     },
@@ -103,6 +107,18 @@ Config.Permissions = {
     -- Add more here to make unique door permissions
 }
 
+-- these will be used for unqiue players like doors for houses instead of using a job and grade it uses charidentfier, you can find these in the database under characters table its a unique identifier
+-- if you use vorp housing that script already handles doors
+-- just add these to the Config.Doors
+Config.UniquePermissions = {
+    location = {      -- any name this is used to avoid
+        [147] = true, -- add char ids here
+        -- add more here
+    },
+    -- create more here for other places
+}
+
+-- items you can assign to each door if you which or the same item for various doors
 Config.Lockpicks = {
     location = {              -- unique location name to be used at Config.Doors.BreakAble
         lockpick = "lockpick" -- ITEMS HERE CANNOT BE NAMED THE SAME YOU MUST MAKE THEM UNIQUE
@@ -110,9 +126,9 @@ Config.Lockpicks = {
     -- Add more here to make unique door lockpicks
 }
 
+-- permissions for job or charid will try to get one or the other so you can use both jobs and char ids in one door
 Config.Doors = {
     -- Valentine Sheriff Doors
-    -- Doors ID
     [1988748538] = {
         Pos = vector3(-276.01260375977, 802.59106445313, 118.41165161133), -- Door Position
         Name = "Front Door",                                               -- Door Name
@@ -121,6 +137,7 @@ Config.Doors = {
         BreakAble = Config.Lockpicks.location.lockpick,                    -- Will use the lockpick item for this location, if false it will not use lockpick and cant be lockpicked
         Difficulty = 3,                                                    -- Lockpick Difficulty, how many tries
         Alert = true,
+        --UniquePerMission = Config.UniquePermissions.location,              -- remove if you dont want to use charid permissions
     },
     [395506985]  = {
         Pos = vector3(-275.84475708008, 812.02703857422, 118.41483306885),
@@ -950,7 +967,7 @@ Config.Doors = {
         Difficulty = 3,
         Alert = true,
     },
-    [1121239638] = {
+    --[[    [1121239638] = {
         Pos = vector3(3331.8154296875, -700.0858764648438, 43.06853103637695),
         Name = "Back Gate 3 (Left)",
         DoorState = 1,
@@ -958,8 +975,8 @@ Config.Doors = {
         BreakAble = Config.Lockpicks.location,
         Difficulty = 3,
         Alert = true,
-    },
-    [906662604]  = {
+    }, ]]
+    [906662604] = {
         Pos = vector3(3333.580810546875, -702.0559692382812, 43.06853103637695),
         Name = "Back Gate 4 (Right)",
         DoorState = 1,
