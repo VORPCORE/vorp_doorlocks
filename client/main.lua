@@ -1,6 +1,6 @@
 local PromptGroup1 <const> = GetRandomIntInRange(0, 0xffffff)
 local OpenDoors = 0
-local Core = exports.vorp_core:GetCore()
+local Core <const> = exports.vorp_core:GetCore()
 
 local function loadModel(model)
     if not HasModelLoaded(model) then
@@ -9,32 +9,28 @@ local function loadModel(model)
     end
 end
 
-local function PlayKeyAnim(ped, duration)
-    CreateThread(function()
-        local player <const> = ped
-        ClearPedTasks(player)
-        ClearPedSecondaryTask(player)
-        TaskStandStill(player, 3000)
-        Wait(100)
-        local plc <const> = GetEntityCoords(player)
-        loadModel('p_key02x')
-        RequestAnimDict("script_common@jail_cell@unlock@key")
-        repeat Wait(0) until HasAnimDictLoaded("script_common@jail_cell@unlock@key")
-        local prop <const> = CreateObject(joaat('p_key02x'), plc.x, plc.y, plc.z + 0.2, true, false, false, false, false)
-        repeat Wait(0) until DoesEntityExist(prop)
-        SetEntityVisible(prop, false)
-        FreezeEntityPosition(prop, true)
-        local boneIndex <const> = GetEntityBoneIndexByName(player, "SKEL_R_Finger12")
-        TaskPlayAnim(player, 'script_common@jail_cell@unlock@key', 'action', 8.0, 8.0, duration, 1, 0, false, false, false)
-        Wait(750)
-        FreezeEntityPosition(prop, false)
-        SetEntityVisible(prop, true)
-        AttachEntityToEntity(prop, player, boneIndex, 0.02, 0.0120, -0.00850, 0.024, -160.0, 200.0, true, true, false, true, 1, true, false, false)
-        repeat Wait(50) until not IsEntityPlayingAnim(player, "script_common@jail_cell@unlock@key", "action", 3)
-        DeleteObject(prop)
-        SetModelAsNoLongerNeeded('p_key02x')
-        RemoveAnimDict('script_common@jail_cell@unlock@key')
-    end)
+local function PlayKeyAnim(ped)
+    local player <const> = ped
+    local coords <const> = GetEntityCoords(player)
+    local model <const> = 'p_key02x'
+    local dict <const> = 'script_common@jail_cell@unlock@key'
+    loadModel(model)
+    RequestAnimDict(dict)
+    repeat Wait(0) until HasAnimDictLoaded(dict)
+
+    local prop <const> = CreateObject(joaat(model), coords.x, coords.y, coords.z + 0.2, true, false, false, false, false)
+    repeat Wait(0) until DoesEntityExist(prop)
+
+    SetModelAsNoLongerNeeded(model)
+    SetEntityVisible(prop, false)
+    TaskPlayAnim(player, dict, 'action', 8.0, -8.0, 2500, 8, 0, true, false, false)
+    Wait(750)
+    SetEntityVisible(prop, true)
+    AttachEntityToEntity(prop, player, GetEntityBoneIndexByName(player, "SKEL_R_Finger12"), 0.02, 0.0120, -0.00850, 0.024, -160.0, 200.0, true, true, false, true, 1, true, false, false)
+    Wait(1750)
+    SetEntityAsNoLongerNeeded(prop)
+    DeleteEntity(prop)
+    RemoveAnimDict(dict)
 end
 
 local function GetPlayerDistanceFromCoords(x, y, z)
@@ -64,6 +60,7 @@ local function addDoorsToSystem()
         SetDoorNetworked(door)
     end
 end
+
 local function loadAnim(dict)
     if not HasAnimDictLoaded(dict) then
         RequestAnimDict(dict)
@@ -92,12 +89,27 @@ local function getDoorForLockPick(item)
     return false
 end
 
-RegisterNetEvent("vorp_doorlocks:Client:lockpickdoor", function(item, id)
+local function leaveLockpick()
+    Wait(1000)
+    TaskPlayAnim(PlayerPedId(), 'script_proc@rustling@unapproved@gate_lockpick', 'exit', 1.0, -1.0, 2500, 1, 0, true, 0, false, "", false)
+    Wait(2500)
+    RemoveAnimDict('script_ca@carust@02@ig@ig1_rustlerslockpickingconv01')
+    RemoveAnimDict('script_proc@rustling@unapproved@gate_lockpick')
+end
+
+Core.Callback.Register("vorp_doorlocks:Client:lockpickdoor", function(cb, item)
     local isLockpick <const>, door <const> = getDoorForLockPick(item)
-    if not isLockpick then return Core.NotifyObjective(Config.lang.Notneardoor, 2000) end
+    if not isLockpick then
+        Core.NotifyObjective(Config.lang.Notneardoor, 2000)
+        return cb(false)
+    end
 
     local value <const> = Config.Doors[door]
-    if value.DoorState == 0 then return Core.NotifyObjective(Config.lang.Alreadyopen, 5000) end
+    if value.DoorState == 0 then
+        Core.NotifyObjective(Config.lang.Alreadyopen, 5000)
+        return cb(false)
+    end
+
     startLockPickAnim()
 
     local result <const> = exports.lockpick:startLockpick(value.Difficulty)
@@ -107,17 +119,15 @@ RegisterNetEvent("vorp_doorlocks:Client:lockpickdoor", function(item, id)
                 TriggerServerEvent("vorp_doorlocks:Server:AlertPolice", door)
             end
         end
-        TriggerServerEvent("vorp_doorlocks:Server:UpdateDoorState", door, 0, true)
+        TriggerServerEvent("vorp_doorlocks:Server:UpdateDoorState", door)
+        CreateThread(leaveLockpick)
+        Wait(1000) -- give time to update door state
+        return cb(false)
     else
-        TriggerServerEvent("vorp_doorlocks:Server:RemoveLockpick", id)
+        CreateThread(leaveLockpick)
+        return cb(true)
     end
-    Wait(1000)
-    TaskPlayAnim(PlayerPedId(), 'script_proc@rustling@unapproved@gate_lockpick', 'exit', 1.0, -1.0, 2500, 1, 0, true, 0, false, "", false)
-    Wait(2500)
-    RemoveAnimDict('script_ca@carust@02@ig@ig1_rustlerslockpickingconv01')
-    RemoveAnimDict('script_proc@rustling@unapproved@gate_lockpick')
 end)
-
 
 local function ThreadHandler()
     while true do
@@ -131,13 +141,15 @@ local function ThreadHandler()
                     UiPromptSetActiveGroupThisFrame(PromptGroup1, label, 0, 0, 0, 0)
 
                     if UiPromptIsJustPressed(OpenDoors) then
-                        local ped = PlayerPedId()
-                        HidePedWeapons(ped, 2, true)
-                        PlayKeyAnim(ped, 2500)
-                        Wait(2500)
-                        ClearPedTasksImmediately(ped)
-                        v.DoorState = v.DoorState == 0 and 1 or 0
-                        TriggerServerEvent("vorp_doorlocks:Server:UpdateDoorState", door, v.DoorState)
+                        local state <const> = v.DoorState == 0 and 1 or 0
+                        local result = Core.Callback.TriggerAwait("vorp_doorlocks:Server:CheckDoorState", door, state)
+                        if result then
+                            local ped = PlayerPedId()
+                            HidePedWeapons(ped, 2, true)
+                            PlayKeyAnim(ped)
+                            ClearPedTasksImmediately(ped)
+                            v.DoorState = state
+                        end
                     end
                 end
             end
@@ -146,7 +158,6 @@ local function ThreadHandler()
         Wait(sleep)
     end
 end
-
 
 local function manageDoorState()
     for key, value in pairs(Config.Doors) do
@@ -183,8 +194,15 @@ RegisterNetEvent("vorp_doorlocks:Client:UpdatePerms", function(perms)
     manageDoorState()
 end)
 
-
-RegisterNetEvent("vorp_doorlocks:Client:UpdateDoorState", function(door, state)
+RegisterNetEvent("vorp_doorlocks:Client:UpdateDoorState", function(door, state, doubleDoor)
+    if doubleDoor then
+        Config.Doors[doubleDoor].DoorState = state
+        if state == 1 then
+            DoorSystemForceShut(doubleDoor, true)
+            DoorSystemSetOpenRatio(doubleDoor, 0.0, true)
+        end
+        DoorSystemSetDoorState(doubleDoor, state)
+    end
     Config.Doors[door].DoorState = state
     if state == 1 then
         DoorSystemForceShut(door, true)
@@ -211,7 +229,6 @@ RegisterNetEvent("vorp_doorlocks:Client:Sync", function(data)
     addDoorsToSystem()
     CreateThread(ThreadHandler)
 end)
-
 
 AddEventHandler("onClientResourceStart", function(resource)
     if GetCurrentResourceName() ~= resource then return end
@@ -264,5 +281,6 @@ exports('setDoorState', function(door, state)
 
     if Config.Doors[door].DoorState == state then return print("door already is on this state", state) end
 
-    TriggerServerEvent("vorp_doorlocks:Server:UpdateDoorState", door, state)
+    local result = Core.Callback.TriggerAwait("vorp_doorlocks:Server:CheckDoorState", door, state)
+    return result
 end)

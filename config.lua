@@ -1,6 +1,6 @@
 Config = {}
 
-Config.DevMode = false -- Set to false on live servers
+Config.DevMode = true -- Set to false on live servers
 
 Config.lang = {
     PromptText = "Press",
@@ -127,6 +127,7 @@ Config.Lockpicks = {
 }
 
 -- permissions for job or charid will try to get one or the other so you can use both jobs and char ids in one door
+
 Config.Doors = {
     -- Valentine Sheriff Doors
     [1988748538] = {
@@ -138,6 +139,7 @@ Config.Doors = {
         Difficulty = 3,                                                    -- Lockpick Difficulty, how many tries
         Alert = true,
         --UniquePerMission = Config.UniquePermissions.location,              -- remove if you dont want to use charid permissions
+        -- DoubleDoor = 1988748538, -- if is double door just add the door next to it here so it open both at the same time
     },
     [395506985]  = {
         Pos = vector3(-275.84475708008, 812.02703857422, 118.41483306885),
@@ -235,15 +237,17 @@ Config.Doors = {
         BreakAble = Config.Lockpicks.location.lockpick,
         Difficulty = 3,
         Alert = true,
+        DoubleDoor = 3410720590, -- if is double door just add the door next to it here so it open both at the same time
     },
     [3410720590] = {
         Pos = vector3(-757.0423583984375, -1268.4853515625, 43.06859970092773),
-        Name = "Front Door 2 (Right)",
+        Name = "Front Door 1 (Right)",
         DoorState = 1,
         Permissions = Config.Permissions.BWPolice,
         BreakAble = Config.Lockpicks.location.lockpick,
         Difficulty = 3,
         Alert = true,
+        DoubleDoor = 1988748538, -- if is double door just add the door next to it here so it open both at the same time
     },
     [2810801921] = {
         Pos = vector3(-769.1376342773438, -1268.745361328125, 43.04003143310547),
@@ -377,69 +381,77 @@ Config.Doors = {
         BreakAble = Config.Lockpicks.location.lockpick,
         Difficulty = 3,
         Alert = true,
+        DoubleDoor = 1979938193, -- if is double door just add the door next to it here so it open both at the same time
     },
     [1979938193] = {
         Pos = vector3(2493.37255859375, -1307.41845703125, 47.95257186889648),
+        Name = "Front Door 1 (Right)",
+        DoorState = 1,
+        Permissions = Config.Permissions.SDPolice,
+        BreakAble = Config.Lockpicks.location.lockpick,
+        Difficulty = 3,
+        Alert = true,
+        DoubleDoor = 1674105116, -- if is double door just add the door next to it here so it open both at the same time
+    },
+    [1694749582] = {
+        Pos = vector3(2493.37255859375, -1310.2252197265625, 47.95257186889648),
+        Name = "Front Door 2 (Left)",
+        DoorState = 1,
+        Permissions = Config.Permissions.SDPolice,
+        BreakAble = Config.Lockpicks.location.lockpick,
+        Difficulty = 3,
+        Alert = true,
+        DoubleDoor = 1992193795, -- if is double door just add the door next to it here so it open both at the same time
+    },
+    [1992193795] = {
+        Pos = vector3(2493.37255859375, -1311.95654296875, 47.95257186889648),
         Name = "Front Door 2 (Right)",
         DoorState = 1,
         Permissions = Config.Permissions.SDPolice,
         BreakAble = Config.Lockpicks.location.lockpick,
         Difficulty = 3,
         Alert = true,
+        DoubleDoor = 1694749582, -- if is double door just add the door next to it here so it open both at the same time
     },
-    [1694749582] = {
-        Pos = vector3(2493.37255859375, -1310.2252197265625, 47.95257186889648),
+    [2503834054] = {
+        Pos = vector3(2495.953369140625, -1317.28271484375, 47.95257186889648),
         Name = "Front Door 3 (Left)",
         DoorState = 1,
         Permissions = Config.Permissions.SDPolice,
         BreakAble = Config.Lockpicks.location.lockpick,
         Difficulty = 3,
         Alert = true,
+        DoubleDoor = 305296302, -- if is double door just add the door next to it here so it open both at the same time
     },
-    [1992193795] = {
-        Pos = vector3(2493.37255859375, -1311.95654296875, 47.95257186889648),
+    [305296302]  = {
+        Pos = vector3(2497.684814453125, -1317.28271484375, 47.95257186889648),
+        Name = "Front Door 3 (Right)",
+        DoorState = 1,
+        Permissions = Config.Permissions.SDPolice,
+        BreakAble = Config.Lockpicks.location.lockpick,
+        Difficulty = 3,
+        Alert = true,
+        DoubleDoor = 2503834054, -- if is double door just add the door next to it here so it open both at the same time
+    },
+    [603068205]  = {
+        Pos = vector3(2506.606201171875, -1317.2796630859375, 47.95257186889648),
+        Name = "Front Door 4 (Left)",
+        DoorState = 1,
+        Permissions = Config.Permissions.SDPolice,
+        BreakAble = Config.Lockpicks.location.lockpick,
+        Difficulty = 3,
+        Alert = true,
+        DoubleDoor = 1020479727, -- if is double door just add the door next to it here so it open both at the same time
+    },
+    [1020479727] = {
+        Pos = vector3(2508.337646484375, -1317.2796630859375, 47.95257186889648),
         Name = "Front Door 4 (Right)",
         DoorState = 1,
         Permissions = Config.Permissions.SDPolice,
         BreakAble = Config.Lockpicks.location.lockpick,
         Difficulty = 3,
         Alert = true,
-    },
-    [2503834054] = {
-        Pos = vector3(2495.953369140625, -1317.28271484375, 47.95257186889648),
-        Name = "Front Door 5 (Left)",
-        DoorState = 1,
-        Permissions = Config.Permissions.SDPolice,
-        BreakAble = Config.Lockpicks.location.lockpick,
-        Difficulty = 3,
-        Alert = true,
-    },
-    [305296302]  = {
-        Pos = vector3(2497.684814453125, -1317.28271484375, 47.95257186889648),
-        Name = "Front Door 6 (Right)",
-        DoorState = 1,
-        Permissions = Config.Permissions.SDPolice,
-        BreakAble = Config.Lockpicks.location.lockpick,
-        Difficulty = 3,
-        Alert = true,
-    },
-    [603068205]  = {
-        Pos = vector3(2506.606201171875, -1317.2796630859375, 47.95257186889648),
-        Name = "Front Door 7 (Left)",
-        DoorState = 1,
-        Permissions = Config.Permissions.SDPolice,
-        BreakAble = Config.Lockpicks.location.lockpick,
-        Difficulty = 3,
-        Alert = true,
-    },
-    [1020479727] = {
-        Pos = vector3(2508.337646484375, -1317.2796630859375, 47.95257186889648),
-        Name = "Front Door 8 (Right)",
-        DoorState = 1,
-        Permissions = Config.Permissions.SDPolice,
-        BreakAble = Config.Lockpicks.location.lockpick,
-        Difficulty = 3,
-        Alert = true,
+        DoubleDoor = 603068205, -- if is double door just add the door next to it here so it open both at the same time
     },
     [417663242]  = {
         Pos = vector3(2516.144287109375, -1309.9276123046875, 47.95257186889648),
@@ -449,15 +461,17 @@ Config.Doors = {
         BreakAble = Config.Lockpicks.location.lockpick,
         Difficulty = 3,
         Alert = true,
+        DoubleDoor = 1611175760, -- if is double door just add the door next to it here so it open both at the same time
     },
     [1611175760] = {
         Pos = vector3(2516.14453125, -1307.724853515625, 47.95257186889648),
-        Name = "Back Door 2 (Right)",
+        Name = "Back Door 1 (Right)",
         DoorState = 1,
         Permissions = Config.Permissions.SDPolice,
         BreakAble = Config.Lockpicks.location.lockpick,
         Difficulty = 3,
         Alert = true,
+        DoubleDoor = 417663242, -- if is double door just add the door next to it here so it open both at the same time
     },
 
     --[[ -- You can open them if you want to deal with a bit more doors (more security) at entrances and exits
@@ -627,15 +641,17 @@ Config.Doors = {
         BreakAble = Config.Lockpicks.location,
         Difficulty = 3,
         Alert = true,
+        DoubleDoor = 3886827663, -- if is double door just add the door next to it here so it open both at the same time
     },
     [3886827663] = {
         Pos = vector3(-306.8853454589844, 780.1154174804688, 117.72991180419922),
-        Name = "Front Door 2 (Right)",
+        Name = "Front Door 1 (Right)",
         DoorState = 0,
         Permissions = Config.Permissions.ValBank,
         BreakAble = Config.Lockpicks.location,
         Difficulty = 3,
         Alert = true,
+        DoubleDoor = 2642457609, -- if is double door just add the door next to it here so it open both at the same time
     },
     [1340831050] = {
         Pos = vector3(-311.7406311035156, 774.6756591796875, 117.72991180419922),
@@ -741,6 +757,7 @@ Config.Doors = {
         BreakAble = Config.Lockpicks.location,
         Difficulty = 3,
         Alert = true,
+        DoubleDoor = 1733501235, -- if is double door just add the door next to it here so it open both at the same time
     },
     [1733501235] = {
         Pos = vector3(2638.72216796875, -1300.0184326171875, 51.24600982666015),
@@ -750,6 +767,7 @@ Config.Doors = {
         BreakAble = Config.Lockpicks.location,
         Difficulty = 3,
         Alert = true,
+        DoubleDoor = 2158285782, -- if is double door just add the door next to it here so it open both at the same time
     },
     [965922748]  = {
         Pos = vector3(2648.98046875, -1300.0491943359375, 51.24539184570312),
@@ -759,6 +777,7 @@ Config.Doors = {
         BreakAble = Config.Lockpicks.location,
         Difficulty = 3,
         Alert = true,
+        DoubleDoor = 1634115439, -- if is double door just add the door next to it here so it open both at the same time
     },
     [1634115439] = {
         Pos = vector3(2646.980224609375, -1300.983154296875, 51.24538421630859),
@@ -768,6 +787,7 @@ Config.Doors = {
         BreakAble = Config.Lockpicks.location,
         Difficulty = 3,
         Alert = true,
+        DoubleDoor = 965922748, -- if is double door just add the door next to it here so it open both at the same time
     },
     [2817024187] = {
         Pos = vector3(2642.15673828125, -1285.4188232421875, 51.24600982666015),
@@ -777,6 +797,7 @@ Config.Doors = {
         BreakAble = Config.Lockpicks.location,
         Difficulty = 3,
         Alert = true,
+        DoubleDoor = 2089945615, -- if is double door just add the door next to it here so it open both at the same time
     },
     [2089945615] = {
         Pos = vector3(2640.175537109375, -1286.342529296875, 51.24600982666015),
@@ -786,6 +807,7 @@ Config.Doors = {
         BreakAble = Config.Lockpicks.location,
         Difficulty = 3,
         Alert = true,
+        DoubleDoor = 2817024187, -- if is double door just add the door next to it here so it open both at the same time
     },
     [1751238140] = {
         Pos = vector3(2643.300537109375, -1300.4267578125, 51.25582504272461),
@@ -807,15 +829,17 @@ Config.Doors = {
         BreakAble = Config.Lockpicks.location,
         Difficulty = 3,
         Alert = true,
+        DoubleDoor = 3088209306, -- if is double door just add the door next to it here so it open both at the same time
     },
     [3088209306] = {
         Pos = vector3(1294.595703125, -1297.583740234375, 76.03963470458984),
-        Name = "Front Door 2 (Right)",
+        Name = "Front Door 1 (Right)",
         DoorState = 0,
         Permissions = Config.Permissions.RhoBank,
         BreakAble = Config.Lockpicks.location,
         Difficulty = 3,
         Alert = true,
+        DoubleDoor = 3317756151, -- if is double door just add the door next to it here so it open both at the same time
     },
     [2058564250] = {
         Pos = vector3(1285.1475830078125, -1303.1185302734375, 76.04006958007812),
@@ -873,15 +897,17 @@ Config.Doors = {
         BreakAble = Config.Lockpicks.location,
         Difficulty = 3,
         Alert = true,
+        DoubleDoor = 3093514944, -- if is double door just add the door next to it here so it open both at the same time
     },
     [3093514944] = {
         Pos = vector3(360.2287292480469, 1465.9957275390625, 178.7265625),
-        Name = "Front Gate 2 (Right)",
+        Name = "Front Gate 1 (Right)",
         DoorState = 0,
         Permissions = Config.Permissions.FortWallace,
         BreakAble = Config.Lockpicks.location,
         Difficulty = 3,
         Alert = true,
+        DoubleDoor = 385812466, -- if is double door just add the door next to it here so it open both at the same time
     },
     [1163537966] = {
         Pos = vector3(347.78607177734375, 1471.0980224609375, 178.77976989746094),
@@ -957,33 +983,37 @@ Config.Doors = {
         BreakAble = Config.Lockpicks.location,
         Difficulty = 3,
         Alert = true,
+        DoubleDoor = 1121239638, -- if is double door just add the door next to it here so it open both at the same time
     },
     [1121239638] = {
         Pos = vector3(3327.572265625, -707.517822265625, 43.38306045532226),
+        Name = "Back Gate 1 (Right)",
+        DoorState = 1,
+        Permissions = Config.Permissions.Sisika,
+        BreakAble = Config.Lockpicks.location,
+        Difficulty = 3,
+        Alert = true,
+        DoubleDoor = 2617210026, -- if is double door just add the door next to it here so it open both at the same time
+    },
+    [3984556459] = {
+        Pos = vector3(3331.8154296875, -700.0858764648438, 43.06853103637695),
+        Name = "Back Gate 2 (Left)",
+        DoorState = 1,
+        Permissions = Config.Permissions.Sisika,
+        BreakAble = Config.Lockpicks.location,
+        Difficulty = 3,
+        Alert = true,
+        DoubleDoor = 906662604, -- if is double door just add the door next to it here so it open both at the same time
+    },
+    [906662604]  = {
+        Pos = vector3(3333.580810546875, -702.0559692382812, 43.06853103637695),
         Name = "Back Gate 2 (Right)",
         DoorState = 1,
         Permissions = Config.Permissions.Sisika,
         BreakAble = Config.Lockpicks.location,
         Difficulty = 3,
         Alert = true,
-    },
-    [3984556459] = {
-        Pos = vector3(3331.8154296875, -700.0858764648438, 43.06853103637695),
-        Name = "Back Gate 3 (Left)",
-        DoorState = 1,
-        Permissions = Config.Permissions.Sisika,
-        BreakAble = Config.Lockpicks.location,
-        Difficulty = 3,
-        Alert = true,
-    },
-    [906662604] = {
-        Pos = vector3(3333.580810546875, -702.0559692382812, 43.06853103637695),
-        Name = "Back Gate 4 (Right)",
-        DoorState = 1,
-        Permissions = Config.Permissions.Sisika,
-        BreakAble = Config.Lockpicks.location,
-        Difficulty = 3,
-        Alert = true,
+        DoubleDoor = 3984556459, -- if is double door just add the door next to it here so it open both at the same time
     },
 
     -- ADD MORE DOORS HERE
