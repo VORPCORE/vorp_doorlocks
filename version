@@ -1,3 +1,8 @@
+<0.4>
+- this commits adds security to lockpicking and door opening to prevent cheating
+- refactored the open door, it uses callbacks before trying to open a door
+- have also implemented support for double doors
+- refactored open door animation so ped doesn't move while opening door
 <0.3>
 - added support to decay items
 - added new exports for client and server to dynamically add permissions to doors or remove
