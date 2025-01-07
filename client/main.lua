@@ -137,7 +137,7 @@ local function ThreadHandler()
                 local distance <const> = GetPlayerDistanceFromCoords(v.Pos.x, v.Pos.y, v.Pos.z)
                 if distance < 1.5 then
                     sleep = 0
-                    local label <const> = VarString(10, 'LITERAL_STRING', v.Name .. " " .. (v.DoorState == 0 and "Open" or "Close"))
+                    local label <const> = VarString(10, 'LITERAL_STRING', v.Name .. " " .. (v.DoorState == 1 and "Open" or "Close"))
                     UiPromptSetActiveGroupThisFrame(PromptGroup1, label, 0, 0, 0, 0)
 
                     if UiPromptIsJustPressed(OpenDoors) then
