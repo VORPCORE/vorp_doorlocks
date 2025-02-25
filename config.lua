@@ -127,7 +127,7 @@ Config.Lockpicks = {
 }
 
 -- permissions for job or charid will try to get one or the other so you can use both jobs and char ids in one door
-
+-- https://github.com/femga/rdr3_discoveries/blob/master/doorHashes/doorhashes.lua to look for door ids go to this link , with spooner you can check the coords of the door and use those coords in the link to get the door id
 Config.Doors = {
     -- Valentine Sheriff Doors
     [1988748538] = {
