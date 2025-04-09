@@ -18,7 +18,7 @@ local function PlayKeyAnim(ped)
     RequestAnimDict(dict)
     repeat Wait(0) until HasAnimDictLoaded(dict)
 
-    local prop <const> = CreateObject(joaat(model), coords.x, coords.y, coords.z + 0.2, true, false, false, false, false)
+    local prop <const> = CreateObject(joaat(model), coords.x, coords.y, coords.z + 0.2, false, false, false, false, false)
     repeat Wait(0) until DoesEntityExist(prop)
 
     SetModelAsNoLongerNeeded(model)
@@ -137,8 +137,11 @@ local function ThreadHandler()
                 local distance <const> = GetPlayerDistanceFromCoords(v.Pos.x, v.Pos.y, v.Pos.z)
                 if distance < 1.5 then
                     sleep = 0
-                    local label <const> = VarString(10, 'LITERAL_STRING', v.Name .. " " .. (v.DoorState == 1 and "Open" or "Close"))
+                    local label <const> = VarString(10, 'LITERAL_STRING', v.Name .. " " .. (v.DoorState == 0 and "Opened" or "Closed"))
                     UiPromptSetActiveGroupThisFrame(PromptGroup1, label, 0, 0, 0, 0)
+
+                    local str = VarString(10, 'LITERAL_STRING', (v.DoorState == 1 and "Open" or "Close"))
+                    UiPromptSetText(OpenDoors, str)
 
                     if UiPromptIsJustPressed(OpenDoors) then
                         local state <const> = v.DoorState == 0 and 1 or 0
@@ -195,7 +198,7 @@ RegisterNetEvent("vorp_doorlocks:Client:UpdatePerms", function(perms)
 end)
 
 RegisterNetEvent("vorp_doorlocks:Client:UpdateDoorState", function(door, state, doubleDoor)
-    if doubleDoor then
+    if doubleDoor and Config.Doors[doubleDoor] then
         Config.Doors[doubleDoor].DoorState = state
         if state == 1 then
             DoorSystemForceShut(doubleDoor, true)
