@@ -173,7 +173,7 @@ local function manageDoorState()
             end
         end
 
-        if value.Permissions then
+        if value.Permissions and not isAllowed then
             local job <const> = LocalPlayer.state.Character.Job
             local grade <const> = LocalPlayer.state.Character.Grade
             if not (value.Permissions[job] and grade >= value.Permissions[job]) then
