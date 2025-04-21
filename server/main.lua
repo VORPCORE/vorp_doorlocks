@@ -25,11 +25,13 @@ Core.Callback.Register("vorp_doorlocks:Server:CheckDoorState", function(source, 
 
     -- export wasn't used to allow or disallow so we check for permissions, other wise if true then player was allowed so we skip permissions checks
     if value.isAllowed == nil then
+        local isAllowed = true
+         local notify = ""
         if value.Permissions then
             local user <const> = Core.getUser(_source)
             if not user then return cb(false) end
 
-            local notify = ""
+           
             local character <const> = user.getUsedCharacter
             local job <const> = character.job
             local grade <const> = character.jobGrade
@@ -42,19 +44,22 @@ Core.Callback.Register("vorp_doorlocks:Server:CheckDoorState", function(source, 
                 notify = Config.lang.GradeNotalowed
             end
 
-            -- if its valid then allow check if its char id allowed
             if not value.UniquePermissions and notify ~= "" then
-                Core.NotifyObjective(_source, notify, 5000)
-                return cb(false)
+                isAllowed = false
             end
         end
 
         if value.UniquePermissions then
             local charid <const> = Player(_source).state.Character.CharId
             if not value.UniquePermissions[charid] then
-                Core.NotifyObjective(_source, "not allowed to open this door", 5000)
-                return cb(false)
+                notify = "not allowed to open this door"
+                isAllowed = false
             end
+        end
+
+        if not isAllowed then
+            Core.NotifyObjective(_source, notify, 5000)
+            return cb(false)
         end
     end
 
