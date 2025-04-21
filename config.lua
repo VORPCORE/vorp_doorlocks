@@ -1,6 +1,6 @@
 Config = {}
 
-Config.DevMode = true -- Set to false on live servers
+Config.DevMode = false -- Set to false on live servers
 
 Config.lang = {
     PromptText = "Press",
