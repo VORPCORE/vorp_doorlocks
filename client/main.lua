@@ -135,12 +135,12 @@ local function ThreadHandler()
         for door, v in pairs(Config.Doors) do
             if v.isAllowed then
                 local distance <const> = GetPlayerDistanceFromCoords(v.Pos.x, v.Pos.y, v.Pos.z)
-                if distance < 1.5 then
+                if distance < Config.InteractionDistance then
                     sleep = 0
-                    local label <const> = VarString(10, 'LITERAL_STRING', v.Name .. " " .. (v.DoorState == 0 and "Opened" or "Closed"))
+                    local label <const> = VarString(10, 'LITERAL_STRING', v.Name .. " " .. (v.DoorState == 0 and Config.lang.Opened or Config.lang.Closed))
                     UiPromptSetActiveGroupThisFrame(PromptGroup1, label, 0, 0, 0, 0)
 
-                    local str = VarString(10, 'LITERAL_STRING', (v.DoorState == 1 and "Open" or "Close"))
+                    local str = VarString(10, 'LITERAL_STRING', (v.DoorState == 1 and Config.lang.Open or Config.lang.Close))
                     UiPromptSetText(OpenDoors, str)
 
                     if UiPromptIsJustPressed(OpenDoors) then
