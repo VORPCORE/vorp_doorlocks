@@ -144,7 +144,7 @@ Config.Doors = {
         BreakAble = Config.Lockpicks.location.lockpick,                    -- Will use the lockpick item for this location, if false it will not use lockpick and cant be lockpicked
         Difficulty = 3,                                                    -- Lockpick Difficulty, how many tries
         Alert = true,
-        --UniquePerMission = Config.UniquePermissions.location,              -- remove if you dont want to use charid permissions
+        --UniquePermissions = Config.UniquePermissions.location,              -- remove if you dont want to use charid permissions
         -- DoubleDoor = 1988748538, -- if is double door just add the door next to it here so it open both at the same time
     },
     [395506985]  = {
