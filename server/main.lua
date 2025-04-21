@@ -31,16 +31,15 @@ Core.Callback.Register("vorp_doorlocks:Server:CheckDoorState", function(source, 
             local user <const> = Core.getUser(_source)
             if not user then return cb(false) end
 
-           
             local character <const> = user.getUsedCharacter
             local job <const> = character.job
             local grade <const> = character.jobGrade
 
-            if value.Permissions[job] == nil then
+            if not value.Permissions[job]  then
                 notify = Config.lang.NotAllowed
             end
 
-            if grade < value.Permissions[job] then
+            if value.Permissions[job] and grade < value.Permissions[job] then
                 notify = Config.lang.GradeNotalowed
             end
 
@@ -122,7 +121,7 @@ CreateThread(function()
                 if lockpicking[data.source] then
                     lockpicking[data.source] = nil
                 end
-            end)
+            end,GetCurrentResourceName())
         end
     end
 end)
