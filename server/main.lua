@@ -51,7 +51,7 @@ Core.Callback.Register("vorp_doorlocks:Server:CheckDoorState", function(source, 
 
         if value.UniquePermissions then
             local charid <const> = Player(_source).state.Character.CharId
-            if value.UniquePermissions[charid] == nil then
+            if not value.UniquePermissions[charid] then
                 Core.NotifyObjective(_source, "not allowed to open this door", 5000)
                 return cb(false)
             end
