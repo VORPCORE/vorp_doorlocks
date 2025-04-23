@@ -25,8 +25,9 @@ Core.Callback.Register("vorp_doorlocks:Server:CheckDoorState", function(source, 
 
     -- export wasn't used to allow or disallow so we check for permissions, other wise if true then player was allowed so we skip permissions checks
     if value.isAllowed == nil then
-        local isAllowed = true
-         local notify = ""
+        local isAllowed = false
+        local notify = ""
+
         if value.Permissions then
             local user <const> = Core.getUser(_source)
             if not user then return cb(false) end
@@ -35,24 +36,32 @@ Core.Callback.Register("vorp_doorlocks:Server:CheckDoorState", function(source, 
             local job <const> = character.job
             local grade <const> = character.jobGrade
 
-            if not value.Permissions[job]  then
+            if not value.Permissions[job] then
                 notify = Config.lang.NotAllowed
-            end
-
-            if value.Permissions[job] and grade < value.Permissions[job] then
-                notify = Config.lang.GradeNotalowed
-            end
-
-            if not value.UniquePermissions and notify ~= "" then
                 isAllowed = false
+            end
+
+            if value.Permissions[job] then
+                if grade >= value.Permissions[job] then
+                    isAllowed = true
+                else
+                    notify = Config.lang.GradeNotalowed
+                    isAllowed = false
+                end
+            end
+
+            if not value.UniquePermissions or not next(value.UniquePermissions) then
+                isAllowed = true
             end
         end
 
-        if value.UniquePermissions then
+        if value.UniquePermissions and not isAllowed then
             local charid <const> = Player(_source).state.Character.CharId
             if not value.UniquePermissions[charid] then
                 notify = "not allowed to open this door"
                 isAllowed = false
+            else
+                isAllowed = true
             end
         end
 
@@ -121,7 +130,7 @@ CreateThread(function()
                 if lockpicking[data.source] then
                     lockpicking[data.source] = nil
                 end
-            end,GetCurrentResourceName())
+            end, GetCurrentResourceName())
         end
     end
 end)

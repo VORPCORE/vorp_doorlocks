@@ -164,21 +164,27 @@ end
 
 local function manageDoorState()
     for key, value in pairs(Config.Doors) do
-        local isAllowed = true -- default to allowed if both unique and general permissions are not specified
+        local isAllowed = false
 
         if value.UniquePermissions then
             local charid <const> = LocalPlayer.state.Character.CharId
-            if not value.UniquePermissions[charid] then
-                isAllowed = false
+            if value.UniquePermissions[charid] then
+                isAllowed = true
             end
         end
 
         if value.Permissions and not isAllowed then
             local job <const> = LocalPlayer.state.Character.Job
             local grade <const> = LocalPlayer.state.Character.Grade
-            if not (value.Permissions[job] and grade >= value.Permissions[job]) then
-                isAllowed = false
+            if (value.Permissions[job] and value.Permissions[job] <= grade) then
+                isAllowed = true
             end
+        end
+
+        if (not value.Permissions and not value.UniquePermissions) or
+            (value.Permissions and not next(value.Permissions)) and
+            (value.UniquePermissions and not next(value.UniquePermissions)) then
+            isAllowed = true
         end
 
         value.isAllowed = isAllowed
