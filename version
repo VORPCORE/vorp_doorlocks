@@ -1,3 +1,6 @@
+<0.5>
+- fix allow everyone open doors if tables are empty or removed/false
+- fix permisions for charid and job to work both in pair
 <0.4>
 - this commits adds security to lockpicking and door opening to prevent cheating
 - refactored the open door, it uses callbacks before trying to open a door

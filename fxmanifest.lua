@@ -12,7 +12,7 @@ client_script 'client/main.lua'
 server_script 'server/main.lua'
 
 
-version '0.4'
+version '0.5'
 vorp_checker 'yes'
 vorp_name '^4Resource version Check^3'
 vorp_github 'https://github.com/VORPCORE/vorp_doorlocks'
