@@ -195,7 +195,7 @@ RegisterNetEvent("vorp_doorlocks:Client:UpdatePerms", function(perms)
     if not LocalPlayer.state.IsInSession then return end
 
     if perms then
-        Config.Doors[perms.door].isAllowed = perms.isAllowed
+        Config.Doors[perms.door].isAllowed = perms.allowed
         return
     end
 

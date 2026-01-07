@@ -207,5 +207,5 @@ exports('updateDoorPermission', function(source, door, allow)
     end
 
     Config.Doors[door].isAllowed = allow
-    TriggerClientEvent("vorp_doorlocks:Client:UpdatePerms", source, { door = door, perms = allow })
+    TriggerClientEvent("vorp_doorlocks:Client:UpdatePerms", source, { door = door, allowed = allow })
 end)
