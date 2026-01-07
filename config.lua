@@ -1022,5 +1022,16 @@ Config.Doors = {
         DoubleDoor = 3984556459, -- if is double door just add the door next to it here so it open both at the same time
     },
 
-    -- ADD MORE DOORS HERE
+    -- HOUSING DOORS to work with vorp_housing these doors have permissions set in vorp_housing config
+    -------------- WIDOW ROCK HOUSE 1 -------------------------
+    [4070066247] = {
+        Pos = vector3(-398.64300537109, 1722.3649902344, 215.42929077148),
+        Name = "Front Door",
+        DoorState = 1,
+    },
+    [3444471262] = {
+        Pos = vector3(-389.57995605469, 1730.2189941406, 215.41470336914),
+        Name = "Side Door",
+        DoorState = 1,
+    },
 }
