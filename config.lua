@@ -1023,7 +1023,7 @@ Config.Doors = {
     },
 
     -- HOUSING DOORS to work with vorp_housing these doors have permissions set in vorp_housing config
-    -------------- WIDOW ROCK HOUSE 1 -------------------------
+    -- Widow Rock House 1
     [4070066247] = {
         Pos = vector3(-398.64300537109, 1722.3649902344, 215.42929077148),
         Name = "Front Door",
@@ -1032,6 +1032,174 @@ Config.Doors = {
     [3444471262] = {
         Pos = vector3(-389.57995605469, 1730.2189941406, 215.41470336914),
         Name = "Side Door",
+        DoorState = 1,
+    },
+    -- Cabin at Braithwaite Manor
+    [3921310299] = {
+        Pos = vector3(1115.8677978516, -1989.7192382813, 54.376285552979),
+        Name = "Front Door",
+        DoorState = 1,
+    },
+    -- Cabin at Lake O'Creagh's
+    [868379185] = {
+        Pos = vector3(1697.4683837891, 1508.2376708984, 146.8824005127),
+        Name = "Front Door",
+        DoorState = 1,
+    },
+    [640077562] = {
+        Pos = vector3(1702.7976074219, 1514.3333740234, 146.87799072266),
+        Name = "Back Door",
+        DoorState = 1,
+    },
+    -- Cabin on the Southfield Plains
+    [3929468747] = {
+        Pos = vector3(1136.9982910156, -977.45391845703, 68.385864257813),
+        Name = "Front Door",
+        DoorState = 1,
+    },
+    -- Cabin in the Roanoke Valley
+    [1574473390] = {
+        Pos = vector3(2628.2214355469, 1694.3289794922, 114.66619110107),
+        Name = "Front Door",
+        DoorState = 1,
+    },
+    -- House in Rhodes
+    [1485561723] = {
+        Pos = vector3(1114.6071777344, -1305.0754394531, 65.41828918457),
+        Name = "Front Door",
+        DoorState = 1,
+    },
+    [4276865168] = {
+        Pos = vector3(1115.0217285156, -1302.5012207031, 65.418411254883),
+        Name = "Room 1 Door",
+        DoorState = 1,
+    },
+    [1532575796] = {
+        Pos = vector3(1111.935546875, -1303.3283691406, 65.418014526367),
+        Name = "Room 2 Door",
+        DoorState = 1,
+    },
+    [1151226872] = {
+        Pos = vector3(1114.7044677734, -1301.3328857422, 65.417953491211),
+        Name = "Room 3 Door",
+        DoorState = 1,
+    },
+    [3544613794] = {
+        Pos = vector3(1111.4659423828, -1297.5782470703, 65.41828918457),
+        Name = "Back Door",
+        DoorState = 1,
+    },
+    -- House in the snow town
+    [2183007198] = {
+        Pos = vector3(-1347.9483642578, 2435.2036132813, 307.49612426758),
+        Name = "Front Door",
+        DoorState = 1,
+    },
+    [4288310487] = {
+        Pos = vector3(-1348.2998046875, 2447.0854492188, 307.48056030273),
+        Name = "Back Door",
+        DoorState = 1,
+    },
+    -- House in the snow
+    [872775928] = {
+        Pos = vector3(-556.41680908203, 2698.8635253906, 319.38018798828),
+        Name = "Front Door",
+        DoorState = 1,
+    },
+    [2385374047] = {
+        Pos = vector3(-557.96398925781, 2708.9880371094, 319.43182373047),
+        Name = "Back Door",
+        DoorState = 1,
+    },
+    -- House in Valentine
+    [4123766266] = {
+        Pos = vector3(778.96936035156, 849.52600097656, 117.91557312012),
+        Name = "Front Door",
+        DoorState = 1,
+    },
+    [1002666274] = {
+        Pos = vector3(773.73126220703, 847.73370361328, 117.91557312012),
+        Name = "Room 1 Door",
+        DoorState = 1,
+    },
+    [417362979] = {
+        Pos = vector3(772.65289306641, 841.26782226563, 117.91557312012),
+        Name = "Back Door",
+        DoorState = 1,
+    },
+    -- Cabin on the Dakota River
+    [1434140379] = {
+        Pos = vector3(-692.42681884766, 1042.9229736328, 134.02406311035),
+        Name = "Front Door",
+        DoorState = 1,
+    },
+    -- House on the Dakota River
+    [1189146288] = {
+        Pos = vector3(-615.93969726563, -27.086599349976, 84.997604370117),
+        Name = "Front Door",
+        DoorState = 1,
+    },
+    [365712512] = {
+        Pos = vector3(-611.59692382813, -31.233404159546, 84.997619628906),
+        Name = "Room 1 Door",
+        DoorState = 1,
+    },
+    [138361190] = {
+        Pos = vector3(-610.15533447266, -30.702325820923, 84.997619628906),
+        Name = "Room 2 Door",
+        DoorState = 1,
+    },
+    [906448125] = {
+        Pos = vector3(-608.73846435547, -26.612947463989, 84.997634887695),
+        Name = "Back Door",
+        DoorState = 1,
+    },
+    -- Big Valley Farm House
+    [1535511805] = {
+        Pos = vector3(-2590.8410644531, 457.83801269531, 146.01396179199),
+        Name = "Front Door",
+        DoorState = 1,
+    },
+    [2395304827] = {
+        Pos = vector3(-2597.7019042969, 457.83837890625, 146.01396179199),
+        Name = "Back Door",
+        DoorState = 1,
+    },
+    -- House on the Little Creek River
+    [2212914984] = {
+        Pos = vector3(-2182.5109863281, 716.46356201172, 121.62875366211),
+        Name = "Front Door",
+        DoorState = 1,
+    },
+    [2670400201] = {
+        Pos = vector3(-2176.849609375, 724.85601806641, 121.61985015869),
+        Name = "Room 1 Door",
+        DoorState = 1,
+    },
+    -- Farm House on the outskirts of Blackwater
+    [1606546482] = {
+        Pos = vector3(-1646.2409667969, -1367.1358642578, 83.465660095215),
+        Name = "Front Door",
+        DoorState = 1,
+    },
+    [1309495497] = {
+        Pos = vector3(-1643.0651855469, -1365.2613525391, 83.402526855469),
+        Name = "Room 1 Door",
+        DoorState = 1,
+    },
+    [1063695460] = {
+        Pos = vector3(-1637.3913574219, -1355.4940185547, 83.402557373047),
+        Name = "Room 2 Door",
+        DoorState = 1,
+    },
+    [1731691513] = {
+        Pos = vector3(-1644.9805908203, -1363.3253173828, 83.402526855469),
+        Name = "Bathroom Door",
+        DoorState = 1,
+    },
+    [2310818050] = {
+        Pos = vector3(-1637.7155761719, -1352.6480712891, 83.466453552246),
+        Name = "Back Door",
         DoorState = 1,
     },
 }
