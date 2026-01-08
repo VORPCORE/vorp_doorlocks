@@ -1,4 +1,5 @@
-Config = {}
+---@class vorp_doorlocks_config
+local Config = {}
 
 Config.DevMode = false -- Set to false on live servers
 
@@ -1034,4 +1035,8 @@ Config.Doors = {
         Name = "Side Door",
         DoorState = 1,
     },
+}
+
+return {
+    CONFIG = Config,
 }

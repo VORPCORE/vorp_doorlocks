@@ -1,4 +1,6 @@
 local Core <const> = exports.vorp_core:GetCore()
+local LIB <const> = Import "/config"
+local CONFIG <const> = LIB.CONFIG --[[@as vorp_doorlocks_config]]
 
 local function isCloseToDoor(playerPed, door)
     local coords <const> = GetEntityCoords(playerPed)
@@ -9,11 +11,11 @@ end
 Core.Callback.Register("vorp_doorlocks:Server:CheckDoorState", function(source, cb, door, state)
     local _source <const> = source
 
-    local value <const> = Config.Doors[door]
+    local value <const> = CONFIG.Doors[door]
     if not value then return cb(false) end
 
     if value and not isCloseToDoor(GetPlayerPed(_source), value) then
-        print(string.format(Config.lang.HackAttempt, GetPlayerName(_source), _source))
+        print(string.format(CONFIG.lang.HackAttempt, GetPlayerName(_source), _source))
         return cb(false)
     end
 
@@ -37,7 +39,7 @@ Core.Callback.Register("vorp_doorlocks:Server:CheckDoorState", function(source, 
             local grade <const> = character.jobGrade
 
             if not value.Permissions[job] then
-                notify = Config.lang.NotAllowed
+                notify = CONFIG.lang.NotAllowed
                 isAllowed = false
             end
 
@@ -45,7 +47,7 @@ Core.Callback.Register("vorp_doorlocks:Server:CheckDoorState", function(source, 
                 if grade >= value.Permissions[job] then
                     isAllowed = true
                 else
-                    notify = Config.lang.GradeNotalowed
+                    notify = CONFIG.lang.GradeNotalowed
                     isAllowed = false
                 end
             end
@@ -72,7 +74,7 @@ Core.Callback.Register("vorp_doorlocks:Server:CheckDoorState", function(source, 
     end
 
     if value.DoubleDoor then
-        local door1 <const> = Config.Doors[value.DoubleDoor]
+        local door1 <const> = CONFIG.Doors[value.DoubleDoor]
         if door1 then
             door1.DoorState = state
         end
@@ -83,16 +85,16 @@ Core.Callback.Register("vorp_doorlocks:Server:CheckDoorState", function(source, 
     return cb(true)
 end)
 
-local lockpicking = {}
+local lockpicking <const> = {}
 
 RegisterNetEvent("vorp_doorlocks:Server:UpdateDoorState", function(door)
     local _source <const> = source
 
-    local value <const> = Config.Doors[door]
+    local value <const> = CONFIG.Doors[door]
     if not value then return end
 
     if value and not isCloseToDoor(GetPlayerPed(_source), value) then
-        return print(string.format(Config.lang.HackAttempt, GetPlayerName(_source), _source))
+        return print(string.format(CONFIG.lang.HackAttempt, GetPlayerName(_source), _source))
     end
 
     if not lockpicking[_source] then
@@ -100,7 +102,7 @@ RegisterNetEvent("vorp_doorlocks:Server:UpdateDoorState", function(door)
     end
 
     if value.DoubleDoor then
-        local door1 <const> = Config.Doors[value.DoubleDoor]
+        local door1 <const> = CONFIG.Doors[value.DoubleDoor]
         if door1 then
             door1.DoorState = 0
         end
@@ -111,7 +113,7 @@ RegisterNetEvent("vorp_doorlocks:Server:UpdateDoorState", function(door)
 end)
 
 CreateThread(function()
-    for _, value in pairs(Config.Lockpicks) do
+    for _, value in pairs(CONFIG.Lockpicks) do
         for _, item in pairs(value) do
             exports.vorp_inventory:registerUsableItem(item, function(data)
                 exports.vorp_inventory:closeInventory(data.source)
@@ -140,7 +142,7 @@ end)
 RegisterNetEvent("vorp_doorlocks:Server:AlertPolice", function(door)
     local _source <const> = source
 
-    local value <const> = Config.Doors[door]
+    local value <const> = CONFIG.Doors[door]
     if not value or not value.Alert then return end
 
     if not lockpicking[_source] then return end
@@ -160,22 +162,19 @@ RegisterNetEvent("vorp_doorlocks:Server:AlertPolice", function(door)
 
     table.sort(distances, function(a, b) return a.distance < b.distance end)
 
-    for i = 1, math.min(Config.MinAlert, #distances) do
+    for i = 1, math.min(CONFIG.MinAlert, #distances) do
         local closestPlayer <const> = distances[i]
-        Core.NotifyLeft(tonumber(closestPlayer.id), Config.lang.Alerts.PoliceAlertTitle,
-            Config.lang.Alerts.PoliceAlertMessage, Config.lang.Alerts.PoliceAlertIcon,
-            Config.lang.Alerts.PoliceAlertPicture, Config.lang.Alerts.PoliceAlertDuration,
-            Config.lang.Alerts.PoliceAlertColor)
+        Core.NotifyLeft(tonumber(closestPlayer.id), CONFIG.lang.Alerts.PoliceAlertTitle, CONFIG.lang.Alerts.PoliceAlertMessage, CONFIG.lang.Alerts.PoliceAlertIcon, CONFIG.lang.Alerts.PoliceAlertPicture, CONFIG.lang.Alerts.PoliceAlertDuration, CONFIG.lang.Alerts.PoliceAlertColor)
     end
 end)
 
 
-AddEventHandler("vorp:SelectedCharacter", function(source, character)
-    if Config.DevMode then return end
+AddEventHandler("vorp:SelectedCharacter", function(source, _)
+    if CONFIG.DevMode then return end
 
     -- Sync door states
     local gatherStates = {}
-    for key, value in pairs(Config.Doors) do
+    for key, value in pairs(CONFIG.Doors) do
         gatherStates[key] = value.DoorState
     end
 
@@ -184,7 +183,7 @@ AddEventHandler("vorp:SelectedCharacter", function(source, character)
 end)
 
 
-AddEventHandler("vorp:playerJobChange", function(source, newjob, oldjob)
+AddEventHandler("vorp:playerJobChange", function(source, _, _)
     SetTimeout(1000, function() -- wait for statebags to be available
         TriggerClientEvent("vorp_doorlocks:Client:UpdatePerms", source)
     end)
@@ -200,12 +199,12 @@ end)
 
 -- easily from your resources allow or disallow source to this door dynamically
 exports('updateDoorPermission', function(source, door, allow)
-    if not Config.Doors[door] then return print("no door exists with this id", door) end
+    if not CONFIG.Doors[door] then return print("no door exists with this id", door) end
 
     if not Player(source).state.IsInSession then
         return print("you cannot modify permissions until player is in session", source)
     end
 
-    Config.Doors[door].isAllowed = allow
+    CONFIG.Doors[door].isAllowed = allow
     TriggerClientEvent("vorp_doorlocks:Client:UpdatePerms", source, { door = door, allowed = allow })
 end)

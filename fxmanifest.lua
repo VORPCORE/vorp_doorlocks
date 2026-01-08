@@ -7,7 +7,12 @@ description "Door System for RedM vorp core"
 author "VORP @outsider"
 lua54 'yes'
 
-shared_script 'config.lua'
+shared_script '@vorp_lib/import.lua'
+
+files {
+    'config.lua',
+}
+
 client_script 'client/main.lua'
 server_script 'server/main.lua'
 
