@@ -1156,6 +1156,13 @@ Config.Doors = {
         Name = "Back Door",
         DoorState = 1,
     },
+    --
+    [1963415953] = {
+        Pos = vector3(-1682.8327636719, -340.61013793945, 172.98583984375),
+        Name = "Front Door",
+        DoorState = 1,
+    },
+
 }
 
 return {
